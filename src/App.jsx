@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App"></div>;
-}
+import "@mantine/core/styles.css";
 
-export default App;
+import { MantineProvider, Button } from "@mantine/core";
+
+export default function App() {
+  return (
+    <MantineProvider>
+      <Button>Heeeeloooo</Button>
+    </MantineProvider>
+  );
+}
