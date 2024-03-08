@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-
-import "@mantine/core/styles.css";
-import { Button, Loader, MantineProvider } from "@mantine/core";
+// import "@mantine/core/styles.css";
+// import { Button, Loader, MantineProvider } from "@mantine/core";
 
 export function HomePage() {
   return (
