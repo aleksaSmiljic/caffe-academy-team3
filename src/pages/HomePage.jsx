@@ -1,10 +1,14 @@
+import { Cards } from "../components/Cards";
 import Header from "../components/Header";
+import { MantineProvider } from "@mantine/core";
 
 export function HomePage() {
   return (
-    <>
+    <MantineProvider>
       <Header />
-      <div className="bg-white w-full h-screen"></div>
-    </>
+      <div>
+        <Cards />
+      </div>
+    </MantineProvider>
   );
 }

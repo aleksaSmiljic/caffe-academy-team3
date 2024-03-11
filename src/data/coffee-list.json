@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Espresso kratki",
+    "description": {
+      "short": "Svojom bogatom aromom i punim ukusom, ova mala ali moćna kafica čini savršen početak dana.",
+      "long": "Koncentrisani udarac ukusa, idealan za jutarnji podstrek. Svojom bogatom aromom i punim ukusom, ova mala ali moćna kafica čini savršen početak dana."
+    },
+    "price": {
+      "small": 120,
+      "medium": 130,
+      "large": 140
+    }
+  },
+  {
+    "name": "Espresso dugi",
+    "description": {
+      "short": "Produžena verzija espressa, sa malo više vode, što rezultira blažom notom i produženim uživanjem u kafi.",
+      "long": "Espresso dugi je produžena verzija klasičnog espressa, pružajući isti ukusi karakter, ali sa malo više vode, što rezultira nešto blažom notom i produženim uživanjem u kafi."
+    },
+    "price": {
+      "small": 130,
+      "medium": 140,
+      "large": 150
+    }
+  },
+  {
+    "name": "Espresso kratki sa mlekom",
+    "description": {
+      "short": "Intenzivna kafa obogaćena kremastim dodatkom mleka, stvarajući zadovoljavajući i bogat ukus koji osvaja.",
+      "long": "Intenzivna kafa obogaćena kremastim dodatkom mleka. Ovaj spoj espressa i mleka donosi savršenu ravnotežu između snažne kafe i kremastog mleka, stvarajući zadovoljavajući i bogat ukus koji osvaja srca ljubitelja kafe."
+    },
+    "price": {
+      "small": 140,
+      "medium": 150,
+      "large": 160
+    }
+  },
+  {
+    "name": "Espresso dugi sa mlekom",
+    "description": {
+      "short": "Espresso obogaćen mlekom za savršenu harmoniju arome i ukusa. Idealan izbor za one koji vole blaži ukus.",
+      "long": "Produženi espresso obogaćen mlekom za savršenu harmoniju arome i ukusa. Produženi espresso sa mlekom nudi istu jačinu i kompleksnost kao i klasični espresso, ali sa dodatkom mleka koji pruža nežnu i kremastu teksturu, čineći ga idealnim izborom za one koji vole blaži ukus."
+    },
+    "price": {
+      "small": 150,
+      "medium": 160,
+      "large": 170
+    }
+  },
+  {
+    "name": "Americano",
+    "description": {
+      "short": "Osvežavajući spoj espresso kafe i vruće vode, idealan za laganije uživanje, za bilo koje doba dana.",
+      "long": "Osvežavajući spoj espresso kafe i vruće vode, idealan za laganije uživanje. Americano je klasičan izbor za one koji traže osveženje uz lagani udarac kafe, napitak koji nudi uravnoteženu aromu i blagu gorčinu, idealnu za bilo koje doba dana."
+    },
+    "price": {
+      "small": 150,
+      "medium": 160,
+      "large": 170
+    }
+  },
+  {
+    "name": "Americano sa mlekom",
+    "description": {
+      "short": "Kombinacija laganog osvežavajućeg ukusa americana sa kremastim mlekom, za izvanredno uravnotežen napitak.",
+      "long": "Lagani američki espresso upotpunjen toplim mlekom za blaži kremasti ukus. Americano sa mlekom kombinuje lagani osvežavajući ukus americana sa kremastim mlekom, stvarajući izvanredno uravnotežen napitak koji će vas osvojiti svojom mekoćom i toplinom."
+    },
+    "price": {
+      "small": 160,
+      "medium": 170,
+      "large": 180
+    }
+  },
+  {
+    "name": "Macchiato",
+    "description": {
+      "short": "Ova balansirana kombinacija nudi savršeno iskustvo za one koji vole punoću espressa uz blagi dodir mleka.",
+      "long": "Izražajna kombinacija espresa sa malo mleka za blagu kremastu notu. Macchiato je elegantan i sofisticiran napitak, sastavljen od espressa i malog dodatka mleka koji mu daje nežniji ukus. Ova balansirana kombinacija nudi savršeno iskustvo za one koji vole osetiti punoću espressa uz blagi dodir mleka."
+    },
+    "price": {
+      "small": 150,
+      "medium": 160,
+      "large": 170
+    }
+  },
+  {
+    "name": "Espresso Macchiato",
+    "description": {
+      "short": "Jednostavan, ali izrazito ukusan napitak, koji kombinuje čist, jak ukus espressa sa malo mleka.",
+      "long": "Čisto zadovoljstvo ukusa espressa obogaćeno sa malo mleka. Espresso Macchiato je jednostavan, ali izrazito ukusan napitak, koji kombinuje čist, jak ukus espressa sa malo mleka, pružajući izvanredno uravnoteženo iskustvo za prave ljubitelje kafe."
+    },
+    "price": {
+      "small": 140,
+      "medium": 150,
+      "large": 160
+    }
+  },
+  {
+    "name": "Cappuccino",
+    "description": {
+      "short": "Klasični italijanski napitak koji spaja intenzivnu aromu espressa sa kremastim mlekom i penom na vrhu.",
+      "long": "Bogatstvo arome i ukusa u spoju espressa, mleka i mlečne pene. Cappuccino je klasični italijanski napitak koji spaja intenzivnu aromu espressa sa kremastim mlekom i bogatom mlečnom penom na vrhu. Ovaj balansirani spoj pruža savršenu harmoniju ukusa i teksture, idealan za uživanje u svakom trenutku."
+    },
+    "price": {
+      "small": 150,
+      "medium": 160,
+      "large": 170
+    }
+  },
+  {
+    "name": "Latte",
+    "description": {
+      "short": "Lagani napitak koji kombinuje intenzivan ukus espressa sa nežnom i kremastom teksturom mleka.",
+      "long": "Lagana kombinacija espresso kafe i toplog mleka. Latte je neodoljivo kremasti napitak koji kombinuje intenzivan ukus espressa sa nežnom teksturom mleka. Ovaj napitak je savršen izbor za one koji vole da uživaju u nežnoj i kremastoj kafi sa blagim dodatkom mleka."
+    },
+    "price": {
+      "small": 160,
+      "medium": 170,
+      "large": 180
+    }
+  },
+  {
+    "name": "Mocha Bela Čokolada",
+    "description": {
+      "short": "Osvežavajuća poslastica koja spaja bogati ukus bele čokolade sa intenzivnom aromom espressa i mlečne pene.",
+      "long": "Savršeni spoj bele čokolade, espresso kafe i kremaste mlečne pene. Mocha Bela Čokolada je slatka i osvežavajuća poslastica koja spaja bogati ukus bele čokolade sa intenzivnom aromom espressa i kremastom teksturom mlečne pene. Ovaj napitak će vas očarati svojom slatkoćom i bogatstvom ukusa, pružajući pravo zadovoljstvo za sva vaša čula."
+    },
+    "price": {
+      "small": 170,
+      "medium": 180,
+      "large": 190
+    }
+  },
+  {
+    "name": "Mocha Crna Čokolada",
+    "description": {
+      "short": "Zavodljivi napitak koji kombinuje intenzivan ukus tamne čokolade sa espressom i kremastom mlečnom penom.",
+      "long": "Intenzivna kombinacija tamne čokolade, espressa i kremaste pene. Mocha Crna Čokolada je napitak za prave ljubitelje tamne čokolade i espressa. Ovaj bogati i zavodljivi napitak kombinuje intenzivan ukus tamne čokolade sa klasičnom aromom espressa i kremastom teksturom mlečne pene, pružajući savršenu harmoniju slatkoće i gorčine."
+    },
+    "price": {
+      "small": 170,
+      "medium": 180,
+      "large": 190
+    }
+  },
+  {
+    "name": "Mocha Lešnik",
+    "description": {
+      "short": "Napitak koji spaja intenzivan ukus lešnika sa aromatičnim espressom i kremastom mlečnom penom.",
+      "long": "Osvežavajuća kombinacija lešnika, espressa i kremaste mlečne pene. Mocha Lešnik je napitak koji spaja intenzivan ukus lešnika sa aromatičnim espressom i kremastom mlečnom penom. Ovaj slatki i osvežavajući napitak pruža neodoljivu kombinaciju bogatstva ukusa, savršenu za uživanje u svakom trenutku."
+    },
+    "price": {
+      "small": 170,
+      "medium": 180,
+      "large": 190
+    }
+  },
+  {
+    "name": "Flat White",
+    "description": {
+      "short": "Elegantan napitak koji kombinuje intenzivnu aromu espressa i mleka sa tankim slojem pene na vrhu.",
+      "long": "Balansirani spoj espressa i mleka sa tankim slojem pene na vrhu. Flat White je elegantan i sofisticiran napitak koji kombinuje intenzivnu aromu espressa sa svilenkasto glatkom teksturom mleka. Ovaj uravnoteženi spoj pruža bogato i kremasto iskustvo, uz diskretan sloj pene na vrhu koji dodatno obogaćuje ukus."
+    },
+    "price": {
+      "small": 170,
+      "medium": 180,
+      "large": 190
+    }
+  },
+  {
+    "name": "Lungo Ristretto",
+    "description": {
+      "short": "Produžena verzija klasičnog espressa, ali sa malo intenzivnijim ukusom i savršenom ravnotežom.",
+      "long": "Dugi espresso sa koncentrisanim ukusom i blagom, kremastom notom. Lungo Ristretto je produžena verzija klasičnog espressa, ali sa malo intenzivnijim ukusom. Ovaj napitak pruža savršenu ravnotežu, idealnu za one koji traže nešto više od uobičajene kafe."
+    },
+    "price": {
+      "small": 150,
+      "medium": 160,
+      "large": 170
+    }
+  },
+  {
+    "name": "Affogato",
+    "description": {
+      "short": "Jednostavna, izuzetno ukusna poslastica koja spaja intenzivan ukus espressa sa osvežavajućim sladoledom.",
+      "long": "Egzotična poslastica koja spaja espressso sa sladoledom za savršen spoj topline i osveženja. Affogato je jednostavna ali izuzetno ukusna poslastica koja spaja intenzivan ukus espressa sa osvežavajućom slatkoćom sladoleda. Ovaj spoj topline i osveženja pruža nezaboravno iskustvo za sva vaša čula."
+    },
+    "price": {
+      "small": 180,
+      "medium": 190,
+      "large": 200
+    }
+  },
+  {
+    "name": "Affogato sa sladoledom",
+    "description": {
+      "short": "Slatka i osvežavajuća poslastica koja spaja intenzivan ukus espressa sa kremastom slatkoćom sladoleda.",
+      "long": "Ukusni espresso zaliven preko sladoleda za neodoljivu kombinaciju kafe i slatkoće. Affogato sa sladoledom je slatka i osvežavajuća poslastica koja spaja intenzivan ukus espressa sa kremastom slatkoćom sladoleda. Ovaj neodoljivi spoj pruža savršeno zadovoljstvo za sva vaša čula, idealan za uživanje u svakom trenutku."
+    },
+    "price": {
+      "small": 190,
+      "medium": 200,
+      "large": 210
+    }
+  },
+  {
+    "name": "Frappuccino",
+    "description": {
+      "short": "Osvežavajući napitak koji spaja intenzivan ukus espressa sa kremastom slatkoćom mleka i sladoleda.",
+      "long": "Osvežavajući miks ledenog espresso napitka, mleka i sladoleda. Frappuccino je osvežavajući napitak koji spaja intenzivan ukus espressa sa kremastom slatkoćom mleka i sladoleda. Ovaj osvežavajući spoj pruža savršenu ravnotežu između kafe i slatkoće, idealan za uživanje u toplim danima."
+    },
+    "price": {
+      "small": 200,
+      "medium": 210,
+      "large": 220
+    }
+  },
+  {
+    "name": "Turkish Coffee",
+    "description": {
+      "short": "Tradicionalni napitak koji se priprema na poseban način, pružajući intenzivan ukus i bogatu aromu.",
+      "long": "Tradicionalna turska kafa, bogata i aromatična. Turska kafa je tradicionalni napitak koji se priprema na poseban način, pružajući intenzivan ukus i bogatu aromu. Ova tradicionalna poslastica je idealna za one koji traže autentično i nezaboravno iskustvo kafe."
+    },
+    "price": {
+      "small": 120,
+      "medium": 130,
+      "large": 140
+    }
+  },
+  {
+    "name": "Turkish Coffee sa mlekom",
+    "description": {
+      "short": "Turska tradicionalna kafa sa mlekom kombinuje jaku aromu turske kafe sa kremastim mlekom.",
+      "long": "Turska kafa, tradicionalni napitak koji se priprema na poseban način, obogaćena kremastim mlekom za blagi dodir mekoće. Turska kafa sa mlekom kombinuje tradicionalnu aromu turske kafe sa kremastim mlekom, pružajući uravnoteženo i neodoljivo iskustvo za prave ljubitelje kafe."
+    },
+    "price": {
+      "small": 130,
+      "medium": 140,
+      "large": 150
+    }
+  },
+  {
+    "name": "Cold Brew",
+    "description": {
+      "short": "Osvežavajući napitak koji se priprema na poseban način, pružajući glatku i osvežavajuću kafu bez gorčine.",
+      "long": "Osvežavajuća kafa pripremljena hladnim procesom, idealna za tople dane. Cold Brew je osvežavajući napitak koji se priprema na poseban način, pružajući glatku i osvežavajuću kafu bez gorčine. Ovaj napitak je idealan izbor za tople dane, pružajući trenutke osveženja i uživanja u svakom gutljaju."
+    },
+    "price": {
+      "small": 200,
+      "medium": 210,
+      "large": 220
+    }
+  },
+  {
+    "name": "Cold Brew sa mlekom",
+    "description": {
+      "short": "Cold Brew sa mlekom je osvežavajući napitak koji spaja glatku i osvežavajuću kafu sa kremstim mlekom.",
+      "long": "Ledena osvežavajuća hladna kafa obogaćena kremastim mlekom. Cold Brew sa mlekom je osvežavajući napitak koji spaja glatku i osvežavajuću kafu sa kremstim mlekom. Ovaj napitak pruža savršenu ravnotežu između osveženja, snažne kafe i kremastog mleka. Idealna za uživanje u toplim danima."
+    },
+    "price": {
+      "small": 210,
+      "medium": 220,
+      "large": 230
+    }
+  },
+  {
+    "name": "Ice Coffe",
+    "description": {
+      "short": "Osvežavajući napitak koji spaja intenzivan ukus kafe sa dodatkom leda za uživanje u svakom gutljaju.",
+      "long": "Osvežavajući napitak od kafe sa ledom, savršen za trenutke potpunog osveženja. Ice Coffee je osvežavajući napitak koji spaja intenzivan ukus kafe sa osvežavajućim ledom, pružajući trenutke potpunog osveženja i uživanja u svakom gutljaju. Ovaj napitak je idealan izbor za tople dane, pružajući osveženje i energiju kad vam je najpotrebnije."
+    },
+    "price": {
+      "small": 210,
+      "medium": 220,
+      "large": 230
+    }
+  },
+  {
+    "name": "Ice Coffe sa sladoledom",
+    "description": {
+      "short": "Osvežavajući napitak koji spaja intenzivan ukus kafe sa kremastom slatkoćom sladoleda i dodatkom leda.",
+      "long": "Ukusna kombinacija hladne kafe i sladoleda za dodatnu slatkoću i osveženje. Ice Coffee sa sladoledom je osvežavajući napitak koji spaja intenzivan ukus kafe sa kremastom slatkoćom sladoleda, pružajući neodoljivu kombinaciju osveženja i slatkoće. Ovaj napitak je savršen izbor za uživanje u toplim danima, pružajući trenutke osveženja i zadovoljstva."
+    },
+    "price": {
+      "small": 220,
+      "medium": 230,
+      "large": 240
+    }
+  },
+  {
+    "name": "Ice Coffe sa mlekom",
+    "description": {
+      "short": "Osvežavajući napitak koji spaja intenzivan ukus kafe sa kremastim mlekom, idealan izbor za tople dane.",
+      "long": "Kremasti, osvežavajući, ledeni napitak od kafe obogaćen mlekom. Ice Coffee sa mlekom je osvežavajući napitak koji spaja intenzivan ukus kafe sa kremastim mlekom, pružajući savršenu ravnotežu između osveženja i punog intenziteta kafe. Ovaj napitak je idealan izbor za tople dane, pružajući trenutke osveženja i uživanja u svakom gutljaju."
+    },
+    "price": {
+      "small": 220,
+      "medium": 230,
+      "large": 240
+    }
+  },
+  {
+    "name": "Topla čokolada",
+    "description": {
+      "short": "Neodoljiva poslastica koja predstavlja spoj belgijske čokolade i mleka, savršena za hladne dane.",
+      "long": "Topla poslastica koja pruža trenutke čistog užitka u svakom gutljaju. Topla čokolada je neodoljiva poslastica koja predstavlja spoj najukusnije belgijske čokolade i mleka. Sa svojom bogatom i kremastom teksturom, ova poslastica je savršen izbor za hladne dane, pružajući trenutke čistog užitka i zadovoljstva."
+    },
+    "price": {
+      "small": 270,
+      "medium": 280,
+      "large": 290
+    }
+  }
+]
