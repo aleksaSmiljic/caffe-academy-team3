@@ -1,6 +1,4 @@
-import { Card, Image, Text, Badge, Stack, Group } from "@mantine/core";
 import data from "../data/coffee-list.json";
-import { useEffect, useState } from "react";
 
 export function Cards() {
   const coffeList = data;
