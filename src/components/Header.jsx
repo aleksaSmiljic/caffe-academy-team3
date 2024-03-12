@@ -45,7 +45,7 @@ const Header = () => {
       </div>
       <ul
         className={`md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300
-        ${isOpen ? "top-[80px] opacity-100 z-30 bg-white" : ""}`}
+        ${isOpen ? "top-[80px] opacity-100 z-50 bg-white" : ""}`}
       >
         {Links.map((link) => (
           <li
