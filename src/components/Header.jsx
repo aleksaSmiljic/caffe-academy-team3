@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import { Bars3Icon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3Icon,
+  UserCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 import { useState } from "react";
 
 const Header = () => {
@@ -14,7 +18,7 @@ const Header = () => {
   ];
 
   return (
-    <nav className="p-5 border-b border-black w-full bg-white md:flex md:items-center md:justify-between">
+    <nav className="p-1 border-b border-black w-full  bg-white md:flex md:items-center md:justify-between">
       <div className="flex justify-between items-center">
         <div className="flex item-center top-6 gap-2">
           <Link to="/">
@@ -35,13 +39,13 @@ const Header = () => {
             onClick={() => setIsOpen((oldIsOpen) => !oldIsOpen)}
             className="w-10 h-10 cursor-pointer md:hidden block"
           >
-            <Bars3Icon />
+            {isOpen ? <XMarkIcon /> : <Bars3Icon />}
           </span>
         </span>
       </div>
       <ul
         className={`md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300
-        ${isOpen ? "top-[80px] opacity-100 z-10 bg-white" : ""}`}
+        ${isOpen ? "top-[80px] opacity-100 z-30 bg-white" : ""}`}
       >
         {Links.map((link) => (
           <li
