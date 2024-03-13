@@ -4,7 +4,7 @@ export function Cards() {
   const coffeList = data;
 
   return (
-    <div className="sm:w-[90%] md:w-[90%] w-full lg:max-w-full">
+    <div className="sm:w-[90%] md:w-[90%] w-full lg:max-w-full grid grid-cols-1 md:grid-cols-2">
       {coffeList?.map((coffe) => (
         <ul
           key={coffe.name}
