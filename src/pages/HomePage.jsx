@@ -6,7 +6,7 @@ export function HomePage() {
   return (
     <MantineProvider>
       <Header />
-      <div>{<Cards />}</div>
+      <Cards />
     </MantineProvider>
   );
 }
