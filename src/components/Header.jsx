@@ -60,7 +60,7 @@ const Header = () => {
         <ul className="md:flex items-center justify-between ">
           {Links.map((link) => (
             <li
-              onClick={handleClick}
+              onClick={() => setIsOpen(false)}
               key={link.link}
               className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
             >
