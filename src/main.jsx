@@ -8,29 +8,56 @@ import { NotFoundPage } from "./pages/NotFoundPage.jsx";
 import { AdminPage } from "./pages/AdminPage.jsx";
 import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { StatusPage } from "./pages/StatusPage.jsx";
+import Layout from "./pages/Layout.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />,
+    element: <Layout />,
     errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/admin",
+        element: <AdminPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "/status",
+        element: <StatusPage />,
+      },
+    ],
   },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/admin",
-    element: <AdminPage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
-  },
-  {
-    path: "/status",
-    element: <StatusPage />,
-  },
+  // {
+  //   path: "/",
+  //   element: <HomePage />,
+  //   errorElement: <NotFoundPage />,
+  // },
+  // {
+  //   path: "/login",
+  //   element: <LoginPage />,
+  // },
+  // {
+  //   path: "/admin",
+  //   element: <AdminPage />,
+  // },
+  // {
+  //   path: "/register",
+  //   element: <RegisterPage />,
+  // },
+  // {
+  //   path: "/status",
+  //   element: <StatusPage />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

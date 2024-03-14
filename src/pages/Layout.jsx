@@ -3,11 +3,8 @@ import Header from "../components/Header";
 const Layout = () => {
   return (
     <>
-      <Header>
-        <main>
-          <Outlet />
-        </main>
-      </Header>
+      <Header />
+      <Outlet />
     </>
   );
 };
