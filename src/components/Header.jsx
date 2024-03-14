@@ -17,7 +17,7 @@ const Header = () => {
     { name: "Admin", link: "/admin" },
   ];
 
-  function handleHamburgerClick() {
+  function handleClick() {
     setIsOpen((oldIsOpen) => !oldIsOpen);
     document.body.style.overflow = isOpen ? "auto" : "hidden";
   }
@@ -45,7 +45,7 @@ const Header = () => {
             </Link>
           </span>
           <span
-            onClick={handleHamburgerClick}
+            onClick={handleClick}
             className="w-10 h-10 cursor-pointer md:hidden block"
           >
             {isOpen ? <XMarkIcon /> : <Bars3Icon />}
@@ -60,6 +60,7 @@ const Header = () => {
         <ul className="md:flex items-center justify-between ">
           {Links.map((link) => (
             <li
+              onClick={handleClick}
               key={link.link}
               className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
             >
