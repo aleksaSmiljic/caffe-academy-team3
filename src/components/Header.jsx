@@ -37,6 +37,7 @@ const Header = () => {
         <div className="flex item-center top-2 gap-2">
           <Link to="/">
             <img
+              onClick={handleLinkClick}
               src="logo.png"
               alt="caffe-academy-logo"
               className="h-auto w-40 py-2 cursor-pointer "
@@ -44,7 +45,10 @@ const Header = () => {
           </Link>
         </div>
         <span className="flex items-center">
-          <span className="w-10 h-10 cursor-pointer md:hidden block">
+          <span
+            onClick={handleLinkClick}
+            className="w-10 h-10 cursor-pointer md:hidden block"
+          >
             <Link to="/login">
               <UserCircleIcon />
             </Link>
