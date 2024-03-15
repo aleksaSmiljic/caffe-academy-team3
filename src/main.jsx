@@ -37,27 +37,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <HomePage />,
-  //   errorElement: <NotFoundPage />,
-  // },
-  // {
-  //   path: "/login",
-  //   element: <LoginPage />,
-  // },
-  // {
-  //   path: "/admin",
-  //   element: <AdminPage />,
-  // },
-  // {
-  //   path: "/register",
-  //   element: <RegisterPage />,
-  // },
-  // {
-  //   path: "/status",
-  //   element: <StatusPage />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -17,9 +17,14 @@ const Header = () => {
     { name: "Admin", link: "/admin" },
   ];
 
+  function handleLinkClick() {
+    setIsOpen(false);
+    document.body.style.overflow = "auto";
+  }
+
   function handleClick() {
     setIsOpen((oldIsOpen) => !oldIsOpen);
-    document.body.style.overflow = isOpen ? "auto" : "hidden";
+    document.body.style.overflow = "hidden";
   }
 
   return (
@@ -60,7 +65,7 @@ const Header = () => {
         <ul className="md:flex items-center justify-between ">
           {Links.map((link) => (
             <li
-              onClick={() => setIsOpen(false)}
+              onClick={handleLinkClick}
               key={link.link}
               className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
             >
@@ -74,45 +79,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <nav className="top-0 sticky z-10 p-1 border-b border-black w-full  bg-white md:flex md:items-center md:justify-between">
-<div className="flex justify-between items-center">
-  <div className="flex item-center top-6 gap-2">
-    <Link to="/">
-      <img
-        src="logo.png"
-        alt="caffe-academy-logo"
-        className="h-auto w-40 py-6 cursor-pointer "
-      />
-    </Link>
-  </div>
-  <span className="flex items-center">
-    <span className="w-10 h-10 cursor-pointer md:hidden block">
-      <Link to="/login">
-        <UserCircleIcon />
-      </Link>
-    </span>
-    <span
-      onClick={() => setIsOpen((oldIsOpen) => !oldIsOpen)}
-      className="w-10 h-10 cursor-pointer md:hidden block"
-    >
-      {isOpen ? <XMarkIcon /> : <Bars3Icon />}
-    </span>
-  </span>
-</div>
-<ul
-  className={`md:flex md:items-center z-[1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-300
-  ${isOpen ? "top-[80px] opacity-100 z-50 bg-white" : ""}`}
->
-  {Links.map((link) => (
-    <li
-      key={link.link}
-      className="hover:text-blue-400 duration-500 mx-4 my-6 md:my-0"
-    >
-      <Link to={link.link}>{link.name}</Link>
-    </li>
-  ))}
-</ul>
-</nav> */
-}
