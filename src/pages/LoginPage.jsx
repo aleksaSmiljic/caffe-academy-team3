@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
@@ -21,6 +22,7 @@ export function LoginPage() {
   return (
     <div className="flex bg-green-500 items-center justify-center h-screen w-full">
       <div className="">
+        <InformationCircleIcon className="w-10 h-10 block" />
         <form className="" onSubmit={handleSubmit}>
           <label htmlFor="Email">
             Email
@@ -41,7 +43,7 @@ export function LoginPage() {
             />
             <span>
               <Link className="text-sm" to="/register">
-                Nemam nalog, zelim da se registrujem
+                Zelim da se registrujem
               </Link>
             </span>
           </label>
