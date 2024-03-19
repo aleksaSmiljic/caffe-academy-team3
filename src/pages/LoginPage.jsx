@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { LoginContext } from "../context/loginContext";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(false);
+
+  const { login, setLogin } = useContext(LoginContext);
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
@@ -71,6 +73,7 @@ export function LoginPage() {
           </form>
         </div>
       )}
+      {console.log(login)}
     </div>
   );
 }

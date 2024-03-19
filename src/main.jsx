@@ -9,6 +9,7 @@ import { AdminPage } from "./pages/AdminPage.jsx";
 import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { StatusPage } from "./pages/StatusPage.jsx";
 import Layout from "./pages/Layout.jsx";
+import { LoginContextProvider } from "./context/loginContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <LoginContextProvider>
+      <RouterProvider router={router} />
+    </LoginContextProvider>
   </React.StrictMode>
 );

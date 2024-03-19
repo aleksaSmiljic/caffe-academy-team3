@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../context/loginContext";
 
 export function RegisterPage() {
   const [registerForm, setRegisterForm] = useState({
@@ -10,7 +11,7 @@ export function RegisterPage() {
     passwordAgain: "",
   });
 
-  const [submitBtn, setSubmitBtn] = useState(false);
+  const { login, setLogin } = useContext(LoginContext);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -23,16 +24,17 @@ export function RegisterPage() {
   function handleSubmit(e) {
     e.preventDefault();
     if (registerForm.password === registerForm.passwordAgain) {
-      setSubmitBtn((oldSubmit) => !oldSubmit);
+      setLogin(true);
     } else {
-      console.log("NOT MATCHING");
+      alert("PASSWORDS NOT MATCHING");
     }
     localStorage.setItem("user", JSON.stringify(registerForm));
+    setLogin(true);
   }
 
   return (
     <div className="flex bg-green-500 items-center justify-center h-screen w-full">
-      {submitBtn ? (
+      {login ? (
         <div>
           <h2>Uspešno ste se registrovali!</h2>
           <h2>
