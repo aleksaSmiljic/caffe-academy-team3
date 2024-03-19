@@ -16,6 +16,10 @@ export function LoginPage() {
     setPassword(e.target.value);
   }
 
+  function handleLogOut() {
+    setLogin(false);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const localStorageData = JSON.parse(localStorage.getItem("user"));
@@ -36,6 +40,12 @@ export function LoginPage() {
           <p>Uspesno ste se prijavili</p>
           <button className="block border bg-blue-300 py-2 px-3 rounded-md transform hover:scale-95 transition duration-200">
             <Link to="/">Home Page</Link>
+          </button>
+          <button
+            onClick={handleLogOut}
+            className="block border bg-blue-300 py-2 px-3 rounded-md transform hover:scale-95 transition duration-200"
+          >
+            <Link to="/login">Log Out</Link>
           </button>
         </div>
       ) : (
