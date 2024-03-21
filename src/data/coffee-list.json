@@ -33,7 +33,8 @@
       "small": 140,
       "medium": 150,
       "large": 160
-    }
+    },
+    "milk": true
   },
   {
     "name": "Espresso dugi sa mlekom",
@@ -45,7 +46,8 @@
       "small": 150,
       "medium": 160,
       "large": 170
-    }
+    },
+    "milk": true
   },
   {
     "name": "Americano",
@@ -69,7 +71,8 @@
       "small": 160,
       "medium": 170,
       "large": 180
-    }
+    },
+    "milk": true
   },
   {
     "name": "Macchiato",
@@ -237,7 +240,8 @@
       "small": 130,
       "medium": 140,
       "large": 150
-    }
+    },
+    "milk": true
   },
   {
     "name": "Cold Brew",
@@ -261,7 +265,8 @@
       "small": 210,
       "medium": 220,
       "large": 230
-    }
+    },
+    "milk": true
   },
   {
     "name": "Ice Coffe",
@@ -297,7 +302,8 @@
       "small": 220,
       "medium": 230,
       "large": 240
-    }
+    },
+    "milk": true
   },
   {
     "name": "Topla čokolada",
