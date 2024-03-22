@@ -17,19 +17,19 @@ const Header = () => {
     { name: "Admin", link: "/admin" },
   ];
 
-  function handleLinkClick() {
+  function handleCloseClick() {
     setIsOpen(false);
     document.body.style.overflow = "auto";
   }
 
-  function handleClick() {
-    setIsOpen((oldIsOpen) => !oldIsOpen);
+  function handleOpenClick() {
+    setIsOpen(true);
     document.body.style.overflow = "hidden";
   }
 
   return (
     <header
-      className={`top-0 sticky z-10 p-2 border-b border-black w-full  bg-white md:flex md:items-center md:justify-between ${
+      className={`top-0 sticky z-20 p-2 border-b border-black w-full  bg-white md:flex md:items-center md:justify-between ${
         isOpen ? "h-screen" : ""
       }`}
     >
@@ -37,7 +37,7 @@ const Header = () => {
         <div className="flex item-center top-2 gap-2">
           <Link to="/">
             <img
-              onClick={handleLinkClick}
+              onClick={handleCloseClick}
               src="logo.png"
               alt="caffe-academy-logo"
               className="h-auto w-40 py-2 cursor-pointer "
@@ -46,18 +46,19 @@ const Header = () => {
         </div>
         <span className="flex items-center">
           <span
-            onClick={handleLinkClick}
+            onClick={handleCloseClick}
             className="w-10 h-10 cursor-pointer md:hidden block"
           >
             <Link to="/login">
               <UserCircleIcon />
             </Link>
           </span>
-          <span
-            onClick={handleClick}
-            className="w-10 h-10 cursor-pointer md:hidden block"
-          >
-            {isOpen ? <XMarkIcon /> : <Bars3Icon />}
+          <span className="w-10 h-10 cursor-pointer md:hidden block">
+            {isOpen ? (
+              <XMarkIcon onClick={handleCloseClick} />
+            ) : (
+              <Bars3Icon onClick={handleOpenClick} />
+            )}
           </span>
         </span>
       </div>
@@ -69,7 +70,7 @@ const Header = () => {
         <ul className="md:flex items-center justify-between ">
           {Links.map((link) => (
             <li
-              onClick={handleLinkClick}
+              onClick={handleCloseClick}
               key={link.link}
               className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
             >
