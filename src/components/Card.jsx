@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CoffeeCardModal } from "./CoffeeCardModal";
 
-const Card = ({ title, description, price }) => {
+const Card = ({ title, description, price, hasMilk }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   function openModal() {
@@ -21,6 +21,7 @@ const Card = ({ title, description, price }) => {
           title={title}
           description={description}
           price={price}
+          hasMilk={hasMilk}
           closeModal={closeModal}
         />
       ) : null}

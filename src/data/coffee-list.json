@@ -9,7 +9,8 @@
       "small": 120,
       "medium": 130,
       "large": 140
-    }
+    },
+    "milk": false
   },
   {
     "name": "Espresso dugi",
@@ -21,7 +22,8 @@
       "small": 130,
       "medium": 140,
       "large": 150
-    }
+    },
+    "milk": false
   },
   {
     "name": "Espresso kratki sa mlekom",
@@ -59,7 +61,8 @@
       "small": 150,
       "medium": 160,
       "large": 170
-    }
+    },
+    "milk": false
   },
   {
     "name": "Americano sa mlekom",
@@ -84,7 +87,8 @@
       "small": 150,
       "medium": 160,
       "large": 170
-    }
+    },
+    "milk": false
   },
   {
     "name": "Espresso Macchiato",
@@ -96,7 +100,8 @@
       "small": 140,
       "medium": 150,
       "large": 160
-    }
+    },
+    "milk": false
   },
   {
     "name": "Cappuccino",
@@ -108,7 +113,8 @@
       "small": 150,
       "medium": 160,
       "large": 170
-    }
+    },
+    "milk": false
   },
   {
     "name": "Latte",
@@ -120,7 +126,8 @@
       "small": 160,
       "medium": 170,
       "large": 180
-    }
+    },
+    "milk": false
   },
   {
     "name": "Mocha Bela Čokolada",
@@ -132,7 +139,8 @@
       "small": 170,
       "medium": 180,
       "large": 190
-    }
+    },
+    "milk": false
   },
   {
     "name": "Mocha Crna Čokolada",
@@ -144,7 +152,8 @@
       "small": 170,
       "medium": 180,
       "large": 190
-    }
+    },
+    "milk": false
   },
   {
     "name": "Mocha Lešnik",
@@ -156,7 +165,8 @@
       "small": 170,
       "medium": 180,
       "large": 190
-    }
+    },
+    "milk": false
   },
   {
     "name": "Flat White",
@@ -168,7 +178,8 @@
       "small": 170,
       "medium": 180,
       "large": 190
-    }
+    },
+    "milk": false
   },
   {
     "name": "Lungo Ristretto",
@@ -180,7 +191,8 @@
       "small": 150,
       "medium": 160,
       "large": 170
-    }
+    },
+    "milk": false
   },
   {
     "name": "Affogato",
@@ -192,7 +204,8 @@
       "small": 180,
       "medium": 190,
       "large": 200
-    }
+    },
+    "milk": false
   },
   {
     "name": "Affogato sa sladoledom",
@@ -204,7 +217,8 @@
       "small": 190,
       "medium": 200,
       "large": 210
-    }
+    },
+    "milk": false
   },
   {
     "name": "Frappuccino",
@@ -216,7 +230,8 @@
       "small": 200,
       "medium": 210,
       "large": 220
-    }
+    },
+    "milk": false
   },
   {
     "name": "Turkish Coffee",
@@ -228,7 +243,8 @@
       "small": 120,
       "medium": 130,
       "large": 140
-    }
+    },
+    "milk": false
   },
   {
     "name": "Turkish Coffee sa mlekom",
@@ -253,7 +269,8 @@
       "small": 200,
       "medium": 210,
       "large": 220
-    }
+    },
+    "milk": false
   },
   {
     "name": "Cold Brew sa mlekom",
@@ -278,7 +295,8 @@
       "small": 210,
       "medium": 220,
       "large": 230
-    }
+    },
+    "milk": false
   },
   {
     "name": "Ice Coffe sa sladoledom",
@@ -290,7 +308,8 @@
       "small": 220,
       "medium": 230,
       "large": 240
-    }
+    },
+    "milk": false
   },
   {
     "name": "Ice Coffe sa mlekom",
@@ -315,6 +334,7 @@
       "small": 270,
       "medium": 280,
       "large": 290
-    }
+    },
+    "milk": false
   }
 ]

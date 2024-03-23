@@ -14,6 +14,7 @@ export function CardsList() {
               title={coffe.name}
               description={coffe.description}
               price={coffe.price}
+              hasMilk={coffe.milk}
             />
           </>
         ))}
