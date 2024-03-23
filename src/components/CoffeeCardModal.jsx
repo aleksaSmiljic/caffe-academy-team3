@@ -195,7 +195,7 @@ export function CoffeeCardModal({
             </div>
             <div className="flex flex-row">
               <div className="w-[150px] h-10 bg-gray-300 text-black border border-black mx-2 flex flex-row justify-between items-center">
-                <div className="border-2 border-blue-400 rounded-full w-5 h-5 flex justify-center items-center mx-4">
+                <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
                   <button
                     type="button"
                     className="font-bold text-lg"
@@ -208,7 +208,7 @@ export function CoffeeCardModal({
                 <div>
                   <span className="font-bold text-2xl">{amound}</span>
                 </div>
-                <div className="border-2 border-blue-400 rounded-full w-5 h-5 flex justify-center items-center mx-4">
+                <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
                   <button
                     type="button"
                     className="font-bold text-lg"
