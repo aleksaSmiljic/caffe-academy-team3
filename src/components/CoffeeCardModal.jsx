@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginContext } from "../context/loginContext";
+import { OrderContext } from "../context/OrderContext";
 
 export function CoffeeCardModal({
   title,
@@ -19,6 +21,11 @@ export function CoffeeCardModal({
     large: "large",
   };
 
+  const { login } = useContext(LoginContext);
+
+  const { cart, setCart, orderId, setOrderId, orderAmound, setOrderAmound } =
+    useContext(OrderContext);
+
   const [amound, setAmound] = useState(0);
 
   const [selectedCoffeeBean, setSelectedCoffeeBean] = useState(null);
@@ -28,6 +35,8 @@ export function CoffeeCardModal({
   const [selectedSizePrice, setSelectedSizePrice] = useState(
     coffeeSizePrice.small
   );
+
+  const [coffeeMilk, setCoffeeMilk] = useState("regular");
 
   function handleSizePickPrice(e) {
     const value = e.target.value;
@@ -40,8 +49,43 @@ export function CoffeeCardModal({
     setSelectedCoffeeBean(bean);
   }
 
+  function handleMilkPick(e) {
+    const milk = e.target.value;
+    setCoffeeMilk(milk);
+  }
+
   function handleClose(e) {
     if (e.target.id === "wrapper") closeModal();
+  }
+
+  function handleIncreaseAmound() {
+    setAmound((old) => old + 1);
+    setOrderAmound((old) => old + 1);
+    if (orderAmound === 10) alert("Maksimum 10 kafa po porudžbini");
+  }
+
+  function handleDecreaseAmound() {
+    setAmound((old) => old - 1);
+    setOrderAmound((old) => old - 1);
+  }
+
+  function handleSubmitOrder(e) {
+    e.preventDefault();
+    closeModal();
+    setOrderId((oldOrderId) => oldOrderId++);
+    const order = {
+      id: orderId,
+      name: title,
+      size: coffeeSize,
+      bean: selectedCoffeeBean,
+      milk: hasMilk ? coffeeMilk : "",
+      amound: amound,
+      price: selectedSizePrice * amound,
+    };
+    setCart((oldCart) => [...oldCart, order]);
+
+    console.log(cart);
+    console.log(orderId);
   }
 
   return (
@@ -76,7 +120,7 @@ export function CoffeeCardModal({
               {description.long}
             </p>
           </div>
-          <form className="my-2 md:my-10">
+          <form onSubmit={handleSubmitOrder} className="my-2 md:my-10">
             <h1 className="text-md md:text-lg font-montserrat text-[#164864] font-semibold">
               Odaberite veličinu
             </h1>
@@ -166,7 +210,7 @@ export function CoffeeCardModal({
                           type="radio"
                           name="coffeeMilk"
                           value="regular"
-                          onChange={handleCoffeeBeanPick}
+                          onChange={handleMilkPick}
                         />
                         <span className="mx-2">Regularno</span>
                       </label>
@@ -175,7 +219,7 @@ export function CoffeeCardModal({
                           type="radio"
                           name="coffeeMilk"
                           value="soy"
-                          onChange={handleCoffeeBeanPick}
+                          onChange={handleMilkPick}
                         />
                         <span className="mx-2">Sojno</span>
                       </label>
@@ -184,7 +228,7 @@ export function CoffeeCardModal({
                           type="radio"
                           name="coffeeMilk"
                           value="almond"
-                          onChange={handleCoffeeBeanPick}
+                          onChange={handleMilkPick}
                         />
                         <span className="mx-2">Bademovo</span>
                       </label>
@@ -199,7 +243,7 @@ export function CoffeeCardModal({
                   <button
                     type="button"
                     className="font-bold text-lg"
-                    onClick={() => setAmound((oldAmound) => oldAmound - 1)}
+                    onClick={handleDecreaseAmound}
                     disabled={amound === 0}
                   >
                     -
@@ -212,13 +256,17 @@ export function CoffeeCardModal({
                   <button
                     type="button"
                     className="font-bold text-lg"
-                    onClick={() => setAmound((oldAmound) => oldAmound + 1)}
+                    disabled={amound === 10 || orderAmound === 10}
+                    onClick={handleIncreaseAmound}
                   >
                     +
                   </button>
                 </div>
               </div>
-              <button className="w-[150px] h-10 bg-[#164864] text-white">
+              <button
+                className="w-[150px] h-10 bg-[#164864] text-white"
+                disabled={!login || amound === 0 || selectedCoffeeBean === null}
+              >
                 Poruči {amound * selectedSizePrice}
               </button>
             </div>

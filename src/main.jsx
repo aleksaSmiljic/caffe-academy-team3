@@ -10,6 +10,7 @@ import { RegisterPage } from "./pages/RegisterPage.jsx";
 import { StatusPage } from "./pages/StatusPage.jsx";
 import Layout from "./pages/Layout.jsx";
 import { LoginContextProvider } from "./context/loginContext.jsx";
+import { OrderContextProvider } from "./context/OrderContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <LoginContextProvider>
-      <RouterProvider router={router} />
+      <OrderContextProvider>
+        <RouterProvider router={router} />
+      </OrderContextProvider>
     </LoginContextProvider>
   </React.StrictMode>
 );

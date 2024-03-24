@@ -25,11 +25,11 @@ export function RegisterPage() {
     e.preventDefault();
     if (registerForm.password === registerForm.passwordAgain) {
       setLogin(true);
+      localStorage.setItem("user", JSON.stringify(registerForm));
     } else {
       alert("PASSWORDS NOT MATCHING");
+      setLogin(false);
     }
-    localStorage.setItem("user", JSON.stringify(registerForm));
-    setLogin(true);
   }
 
   return (
