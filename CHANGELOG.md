@@ -2,4 +2,6 @@
 
 19.03.2024 - Added LoginContext as global state to check if the user is logged in
 
-23.03.2025 - Added functionality to the order modal to choose type of bean and milk and also added buttons for amount of coffees and order button
+23.03.2024 - Added functionality to the order modal to choose type of bean and milk and also added buttons for amount of coffees and order button
+
+24.03.2024 - Added functionality to the order modal and limited order amound to 10 coffees
