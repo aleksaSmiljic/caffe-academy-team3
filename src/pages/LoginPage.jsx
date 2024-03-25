@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { LoginContext } from "../context/loginContext";
+import { OrderContext } from "../context/OrderContext";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { login, setLogin } = useContext(LoginContext);
+  const { setCart, setOrderAmound } = useContext(OrderContext);
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
@@ -18,6 +20,8 @@ export function LoginPage() {
 
   function handleLogOut() {
     setLogin(false);
+    setCart([]);
+    setOrderAmound(0);
   }
 
   function handleSubmit(e) {
@@ -83,7 +87,6 @@ export function LoginPage() {
           </form>
         </div>
       )}
-      {console.log(login)}
     </div>
   );
 }
