@@ -11,6 +11,7 @@ import { StatusPage } from "./pages/StatusPage.jsx";
 import Layout from "./pages/Layout.jsx";
 import { LoginContextProvider } from "./context/loginContext.jsx";
 import { OrderContextProvider } from "./context/OrderContext.jsx";
+import CartPage from "./pages/CartPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/status",
         element: <StatusPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
     ],
   },
