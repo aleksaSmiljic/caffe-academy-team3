@@ -5,3 +5,5 @@
 23.03.2024 - Added functionality to the order modal to choose type of bean and milk and also added buttons for amount of coffees and order button
 
 24.03.2024 - Added functionality to the order modal and limited order amound to 10 coffees
+
+25.03.2024 - Made CartPage to list all of the coffees added to the cart
