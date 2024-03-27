@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
 import { CoffeeOrdarModalTest } from "../testComponents/CoffeeOrderModalTest";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart, setCart, setOrderAmound, orderAmound } =
@@ -90,14 +91,16 @@ const CartPage = () => {
         </ul>
       </div>
       <div className="flex justify-end mx-4 my-4">
-        <button
-          onClick={() => {
-            console.log(cart);
-          }}
-          className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
-        >
-          TOTAL: {cart?.reduce((acc, curr) => acc + curr.totalPrice, 0)}
-        </button>
+        <Link to="/status">
+          <button
+            onClick={() => {
+              console.log(cart);
+            }}
+            className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
+          >
+            TOTAL: {cart?.reduce((acc, curr) => acc + curr.totalPrice, 0)}
+          </button>
+        </Link>
       </div>
     </div>
   );
