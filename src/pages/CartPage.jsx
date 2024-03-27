@@ -1,18 +1,17 @@
 import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
-import { CoffeeOrdarModalTest } from "../testComponents/CoffeeOrderModalTest";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { cart, setCart, setOrderAmound, orderAmound } =
-    useContext(OrderContext);
+  const { cart, setCart, setOrderAmound } = useContext(OrderContext);
 
   const [editCoffee, setEditCoffee] = useState(null);
 
   function openModal(coffee) {
     setEditCoffee(coffee);
     document.body.style.overflow = "hidden";
+    console.log(coffee);
   }
 
   function closeModal() {
@@ -28,12 +27,27 @@ const CartPage = () => {
   return (
     <div>
       <div>
+        {editCoffee && (
+          <CoffeeCardModal
+            editAmount={editCoffee.amound}
+            editSelectedCoffeeBeann={editCoffee.bean}
+            editCoffeeSizee={editCoffee.size}
+            editSelectedSizePricee={editCoffee.price}
+            title={editCoffee.name}
+            description={editCoffee.description}
+            price={editCoffee.price}
+            hasMilk={editCoffee.hasMilk}
+            closeModal={closeModal}
+            editMilk={editCoffee.typeOfMilk}
+            editTotalPrice={editCoffee.totalPrice}
+            editCoffee={editCoffee}
+          />
+        )}
         <ul>
           {cart?.map((coffee) => (
             <>
-              {editCoffee && (
+              {/* {editCoffee && (
                 <CoffeeCardModal
-                  handleDelete={handleDelete}
                   editAmount={editCoffee.amound}
                   editSelectedCoffeeBeann={editCoffee.bean}
                   editCoffeeSizee={editCoffee.size}
@@ -43,12 +57,11 @@ const CartPage = () => {
                   price={editCoffee.price}
                   hasMilk={editCoffee.hasMilk}
                   closeModal={closeModal}
-                  //   editMilk={editCoffee.milk}
                   editMilk={editCoffee.typeOfMilk}
                   editTotalPrice={editCoffee.totalPrice}
                   editCoffee={editCoffee}
                 />
-              )}
+              )} */}
               <li key={coffee.id}>
                 <div className="px-4 py-5 sm:px-6 border-b-2">
                   <div className="flex items-center justify-between">

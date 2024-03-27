@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LoginContext } from "../context/loginContext";
 import { OrderContext } from "../context/OrderContext";
 
@@ -10,15 +10,29 @@ const OrderModalForm = ({
   handleCoffeeBeanPick,
   handleIncreaseAmound,
   handleDecreaseAmound,
-  hasMilk,
   selectedCoffeeBean,
   selectedSizePrice,
   amound,
   coffee,
   editCoffee,
+  coffeeSize,
+  coffeeMilk,
 }) => {
   const { login } = useContext(LoginContext);
   const { orderAmound } = useContext(OrderContext);
+  const [checkedFields, setCheckedFilds] = useState({
+    size: editCoffee?.size ?? "",
+    bean: editCoffee?.bean ?? "",
+    milk: editCoffee?.typeOfMilk ?? "",
+  });
+
+  function handleInputChange(e) {
+    const { name, value } = e.target;
+    setCheckedFilds((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
 
   return (
     <form
@@ -37,7 +51,10 @@ const OrderModalForm = ({
             onChange={(e) => {
               handleSizePick(e, editCoffee ?? coffee);
               handleSizePickPrice(e, editCoffee ?? coffee);
+              handleInputChange(e);
             }}
+            // checked={coffeeSize === "small" || editCoffee?.size === "small"}
+            checked={checkedFields.size === "small"}
           />
           <span className="mx-2">Mala</span>
         </label>
@@ -50,7 +67,9 @@ const OrderModalForm = ({
               onChange={(e) => {
                 handleSizePick(e, editCoffee ?? coffee);
                 handleSizePickPrice(e, editCoffee ?? coffee);
+                handleInputChange(e);
               }}
+              checked={checkedFields.size === "medium"}
             />
             <span className="mx-2">Srednja</span>
           </div>
@@ -67,7 +86,9 @@ const OrderModalForm = ({
               onChange={(e) => {
                 handleSizePick(e, editCoffee ?? coffee);
                 handleSizePickPrice(e, editCoffee ?? coffee);
+                handleInputChange(e);
               }}
+              checked={checkedFields.size === "large"}
             />
             <span className="mx-2">Velika</span>
           </div>
@@ -87,7 +108,15 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="brazil"
-                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
+                onChange={(e) => {
+                  handleCoffeeBeanPick(e, editCoffee ?? coffee);
+                  handleInputChange(e);
+                }}
+                // checked={
+                //   selectedCoffeeBean === "brazil" ||
+                //   editCoffee?.bean === "brazil"
+                // }
+                checked={checkedFields.bean === "brazil"}
               />
               <span className="mx-2">Brazil</span>
             </label>
@@ -96,7 +125,11 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="kuba"
-                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
+                onChange={(e) => {
+                  handleCoffeeBeanPick(e, editCoffee ?? coffee);
+                  handleInputChange(e);
+                }}
+                checked={checkedFields.bean === "kuba"}
               />
               <span className="mx-2">Kuba</span>
             </label>
@@ -105,7 +138,11 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="etiopija"
-                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
+                onChange={(e) => {
+                  handleCoffeeBeanPick(e, editCoffee ?? coffee);
+                  handleInputChange(e);
+                }}
+                checked={checkedFields.bean === "etiopija"}
               />
               <span className="mx-2">Etiopija</span>
             </label>
@@ -123,7 +160,15 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="regular"
-                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
+                    onChange={(e) => {
+                      handleMilkPick(e, editCoffee ?? coffee);
+                      handleInputChange(e);
+                    }}
+                    // checked={
+                    //   coffeeMilk === "regular" ||
+                    //   editCoffee?.typeOfMilk === "regular"
+                    // }
+                    checked={checkedFields.milk === "regular"}
                   />
                   <span className="mx-2">Regularno</span>
                 </label>
@@ -132,7 +177,11 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="soy"
-                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
+                    onChange={(e) => {
+                      handleMilkPick(e, editCoffee ?? coffee);
+                      handleInputChange(e);
+                    }}
+                    checked={checkedFields.milk === "soy"}
                   />
                   <span className="mx-2">Sojno</span>
                 </label>
@@ -141,7 +190,11 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="almond"
-                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
+                    onChange={(e) => {
+                      handleMilkPick(e, editCoffee ?? coffee);
+                      handleInputChange(e);
+                    }}
+                    checked={checkedFields.milk === "almond"}
                   />
                   <span className="mx-2">Bademovo</span>
                 </label>

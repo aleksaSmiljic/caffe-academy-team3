@@ -10,14 +10,13 @@ export function CoffeeCardModal({
   title,
   hasMilk,
   price,
-  handleDelete,
 }) {
   const { cart } = useContext(OrderContext);
 
   const coffeeSizePrice = {
-    small: price.small,
-    medium: price.medium,
-    large: price.large,
+    small: editCoffee?.price.small ?? coffee?.price?.small,
+    medium: editCoffee?.price.medium ?? coffee?.price?.medium,
+    large: editCoffee?.price.large ?? coffee?.price?.large,
   };
 
   const coffeeSizes = {
@@ -32,7 +31,7 @@ export function CoffeeCardModal({
   const [amound, setAmound] = useState(editCoffee?.amound ?? 0);
 
   const [selectedCoffeeBean, setSelectedCoffeeBean] = useState(
-    editCoffee?.bean ?? null
+    editCoffee?.bean ?? "brazil"
   );
 
   const [coffeeSize, setCoffeeSize] = useState(
@@ -111,10 +110,11 @@ export function CoffeeCardModal({
       const order = {
         ...coffee,
         id: orderId,
-        name: title,
+        name: coffee.name,
         size: coffeeSize,
         bean: selectedCoffeeBean,
-        typeOfMilk: hasMilk ? coffeeMilk : null,
+        // milk: hasMilk,
+        typeOfMilk: coffee.milk ? coffeeMilk : null,
         amound: amound,
         priceOfOneCoffee: selectedSizePrice,
         totalPrice: selectedSizePrice * amound,
@@ -136,7 +136,7 @@ export function CoffeeCardModal({
           <div className="flex flex-row justify-between my-4 mx-2">
             <div className="flex flex-col ">
               <h1 className="font-semibold text-lg md:text-2xl font-montserrat">
-                {title}
+                {editCoffee?.name ?? coffee?.name}
               </h1>
               <h1 className="font-semibold text-lg md:text-2xl text-[#248CC5] font-montserrat">
                 {editCoffee?.coffeeSizePrice?.[editCoffee?.size] ??
@@ -157,10 +157,13 @@ export function CoffeeCardModal({
           </div>
           <div className="block">
             <p className="text-xs md:text-base font-semibold text-gray-500 font-montserrat">
-              {description ? description.long : "Edit Your Choice:"}
+              {editCoffee?.description.long ?? coffee.description.long}
             </p>
           </div>
           <OrderModalForm
+            selectedCoffeeBean={selectedCoffeeBean}
+            coffeeMilk={coffeeMilk}
+            coffeeSize={coffeeSize}
             coffee={coffee}
             editCoffee={editCoffee}
             handleSubmitOrder={handleSubmitOrder}
@@ -172,7 +175,6 @@ export function CoffeeCardModal({
             handleCoffeeBeanPick={handleCoffeeBeanPick}
             hasMilk={hasMilk}
             amound={amound}
-            selectedCoffeeBean={selectedCoffeeBean}
             selectedSizePrice={selectedSizePrice}
             setAmound={setAmound}
           />
