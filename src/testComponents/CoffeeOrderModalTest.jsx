@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
-import OrderModalForm from "./OrderModalForm";
+import OrderModalForm from "../components/OrderModalForm";
+import TestOrderForm from "./TestOrderForm";
 
-export function CoffeeCardModal({
+export function CoffeeOrdarModalTest({
   coffee,
   editCoffee,
   closeModal,
@@ -10,7 +11,6 @@ export function CoffeeCardModal({
   title,
   hasMilk,
   price,
-  handleDelete,
 }) {
   const { cart } = useContext(OrderContext);
 
@@ -49,13 +49,17 @@ export function CoffeeCardModal({
     const value = e.target.value;
     setCoffeeSize(value);
     coffee = { ...coffee, size: value };
+    console.log(coffee.size);
   }
 
   function handleSizePickPrice(e, coffee) {
+    console.log(coffee);
     const value = e.target.value;
     setSelectedSizePrice(coffeeSizePrice[value]);
     coffee = { ...coffee, price: price };
     coffee = { ...coffee, priceOfOneCoffee: selectedSizePrice };
+    console.log(price?.[value]);
+    console.log(selectedSizePrice);
   }
 
   function handleCoffeeBeanPick(e, coffee) {
@@ -121,7 +125,7 @@ export function CoffeeCardModal({
       };
       setCart((oldCart) => [...oldCart, order]);
     }
-    console.log(orderAmound);
+
     closeModal();
   }
 
@@ -160,7 +164,7 @@ export function CoffeeCardModal({
               {description ? description.long : "Edit Your Choice:"}
             </p>
           </div>
-          <OrderModalForm
+          <TestOrderForm
             coffee={coffee}
             editCoffee={editCoffee}
             handleSubmitOrder={handleSubmitOrder}

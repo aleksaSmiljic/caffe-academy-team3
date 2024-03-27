@@ -5,6 +5,7 @@ import { OrderContext } from "../context/OrderContext";
 const OrderModalForm = ({
   handleSubmitOrder,
   handleSizePickPrice,
+  handleSizePick,
   handleMilkPick,
   handleCoffeeBeanPick,
   handleIncreaseAmound,
@@ -13,12 +14,17 @@ const OrderModalForm = ({
   selectedCoffeeBean,
   selectedSizePrice,
   amound,
+  coffee,
+  editCoffee,
 }) => {
   const { login } = useContext(LoginContext);
   const { orderAmound } = useContext(OrderContext);
 
   return (
-    <form onSubmit={handleSubmitOrder} className="my-2 md:my-10">
+    <form
+      onSubmit={(e) => handleSubmitOrder(e, editCoffee ?? coffee)}
+      className="my-2 md:my-10"
+    >
       <h1 className="text-md md:text-lg font-montserrat text-[#164864] font-semibold">
         Odaberite veličinu
       </h1>
@@ -28,7 +34,10 @@ const OrderModalForm = ({
             type="radio"
             name="size"
             value="small"
-            onChange={handleSizePickPrice}
+            onChange={(e) => {
+              handleSizePick(e, editCoffee ?? coffee);
+              handleSizePickPrice(e, editCoffee ?? coffee);
+            }}
           />
           <span className="mx-2">Mala</span>
         </label>
@@ -38,7 +47,10 @@ const OrderModalForm = ({
               type="radio"
               name="size"
               value="medium"
-              onChange={handleSizePickPrice}
+              onChange={(e) => {
+                handleSizePick(e, editCoffee ?? coffee);
+                handleSizePickPrice(e, editCoffee ?? coffee);
+              }}
             />
             <span className="mx-2">Srednja</span>
           </div>
@@ -52,7 +64,10 @@ const OrderModalForm = ({
               type="radio"
               name="size"
               value="large"
-              onChange={handleSizePickPrice}
+              onChange={(e) => {
+                handleSizePick(e, editCoffee ?? coffee);
+                handleSizePickPrice(e, editCoffee ?? coffee);
+              }}
             />
             <span className="mx-2">Velika</span>
           </div>
@@ -72,7 +87,7 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="brazil"
-                onChange={handleCoffeeBeanPick}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Brazil</span>
             </label>
@@ -81,7 +96,7 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="kuba"
-                onChange={handleCoffeeBeanPick}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Kuba</span>
             </label>
@@ -90,14 +105,14 @@ const OrderModalForm = ({
                 type="radio"
                 name="bean"
                 value="etiopija"
-                onChange={handleCoffeeBeanPick}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Etiopija</span>
             </label>
           </div>
         </div>
         <div>
-          {hasMilk ? (
+          {editCoffee?.milk ?? coffee?.milk ? (
             <div className="mx-4">
               <h1 className="text-md md:text-lg font-montserrat my-1 text-[#164864] font-semibold">
                 Odaberite mleko
@@ -108,7 +123,7 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="regular"
-                    onChange={handleMilkPick}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Regularno</span>
                 </label>
@@ -117,7 +132,7 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="soy"
-                    onChange={handleMilkPick}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Sojno</span>
                 </label>
@@ -126,7 +141,7 @@ const OrderModalForm = ({
                     type="radio"
                     name="milk"
                     value="almond"
-                    onChange={handleMilkPick}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Bademovo</span>
                 </label>
@@ -142,7 +157,7 @@ const OrderModalForm = ({
               type="button"
               className="font-bold text-lg"
               onClick={handleDecreaseAmound}
-              disabled={amound === 0}
+              disabled={amound === 0 || !login}
             >
               -
             </button>
@@ -154,7 +169,7 @@ const OrderModalForm = ({
             <button
               type="button"
               className="font-bold text-lg"
-              disabled={amound === 10 || orderAmound === 10}
+              disabled={amound === 10 || orderAmound === 10 || !login}
               onClick={handleIncreaseAmound}
             >
               +

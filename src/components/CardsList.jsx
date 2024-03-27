@@ -7,13 +7,14 @@ export function CardsList() {
   return (
     <div className="">
       <ul className="w-full lg:max-w-full grid grid-cols-1 md:grid-cols-2 ">
-        {coffeList?.map((coffe) => (
+        {coffeList?.map((coffee) => (
           <Card
-            key={coffe.name}
-            title={coffe.name}
-            description={coffe.description}
-            price={coffe.price}
-            hasMilk={coffe.milk}
+            key={coffee.name}
+            title={coffee.name}
+            description={coffee.description}
+            price={coffee.price}
+            hasMilk={coffee.milk}
+            coffee={coffee}
           />
         ))}
       </ul>

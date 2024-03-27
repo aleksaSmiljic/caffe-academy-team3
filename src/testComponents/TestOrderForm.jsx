@@ -1,17 +1,30 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { LoginContext } from "../context/loginContext";
 import { OrderContext } from "../context/OrderContext";
 
-const EditModalForm = ({
-  hasMilk,
-  amound,
-  handleInputChange,
+const TestOrderForm = ({
   handleSubmitOrder,
-  price,
+  handleSizePickPrice,
+  handleSizePick,
+  handleMilkPick,
+  handleCoffeeBeanPick,
+  handleIncreaseAmound,
+  handleDecreaseAmound,
+  hasMilk,
+  selectedCoffeeBean,
+  selectedSizePrice,
+  amound,
+  coffee,
+  editCoffee,
 }) => {
-  const { orderAmound, setOrderAmound } = useContext(OrderContext);
-  const [editAmound, setEditAmound] = useState(amound);
+  const { login } = useContext(LoginContext);
+  const { orderAmound } = useContext(OrderContext);
+
   return (
-    <form onSubmit={(e) => handleSubmitOrder(e)} className="my-2 md:my-10">
+    <form
+      onSubmit={(e) => handleSubmitOrder(e, editCoffee ?? coffee)}
+      className="my-2 md:my-10"
+    >
       <h1 className="text-md md:text-lg font-montserrat text-[#164864] font-semibold">
         Odaberite veličinu
       </h1>
@@ -21,7 +34,10 @@ const EditModalForm = ({
             type="radio"
             name="size"
             value="small"
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => {
+              handleSizePick(e, editCoffee ?? coffee);
+              handleSizePickPrice(e, editCoffee ?? coffee);
+            }}
           />
           <span className="mx-2">Mala</span>
         </label>
@@ -31,7 +47,10 @@ const EditModalForm = ({
               type="radio"
               name="size"
               value="medium"
-              onChange={(e) => handleInputChange(e)}
+              onChange={(e) => {
+                handleSizePick(e, editCoffee ?? coffee);
+                handleSizePickPrice(e, editCoffee ?? coffee);
+              }}
             />
             <span className="mx-2">Srednja</span>
           </div>
@@ -45,7 +64,10 @@ const EditModalForm = ({
               type="radio"
               name="size"
               value="large"
-              onChange={(e) => handleInputChange(e)}
+              onChange={(e) => {
+                handleSizePick(e, editCoffee ?? coffee);
+                handleSizePickPrice(e, editCoffee ?? coffee);
+              }}
             />
             <span className="mx-2">Velika</span>
           </div>
@@ -65,7 +87,7 @@ const EditModalForm = ({
                 type="radio"
                 name="bean"
                 value="brazil"
-                onChange={(e) => handleInputChange(e)}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Brazil</span>
             </label>
@@ -74,7 +96,7 @@ const EditModalForm = ({
                 type="radio"
                 name="bean"
                 value="kuba"
-                onChange={(e) => handleInputChange(e)}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Kuba</span>
             </label>
@@ -83,14 +105,14 @@ const EditModalForm = ({
                 type="radio"
                 name="bean"
                 value="etiopija"
-                onChange={(e) => handleInputChange(e)}
+                onChange={(e) => handleCoffeeBeanPick(e, editCoffee ?? coffee)}
               />
               <span className="mx-2">Etiopija</span>
             </label>
           </div>
         </div>
         <div>
-          {hasMilk ? (
+          {editCoffee?.milk ?? coffee?.milk ? (
             <div className="mx-4">
               <h1 className="text-md md:text-lg font-montserrat my-1 text-[#164864] font-semibold">
                 Odaberite mleko
@@ -101,7 +123,7 @@ const EditModalForm = ({
                     type="radio"
                     name="milk"
                     value="regular"
-                    onChange={(e) => handleInputChange(e)}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Regularno</span>
                 </label>
@@ -110,7 +132,7 @@ const EditModalForm = ({
                     type="radio"
                     name="milk"
                     value="soy"
-                    onChange={(e) => handleInputChange(e)}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Sojno</span>
                 </label>
@@ -119,7 +141,7 @@ const EditModalForm = ({
                     type="radio"
                     name="milk"
                     value="almond"
-                    onChange={(e) => handleInputChange(e)}
+                    onChange={(e) => handleMilkPick(e, editCoffee ?? coffee)}
                   />
                   <span className="mx-2">Bademovo</span>
                 </label>
@@ -132,40 +154,37 @@ const EditModalForm = ({
         <div className="w-[150px] h-10 bg-gray-300 text-black border border-black mx-2 flex flex-row justify-between items-center">
           <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
             <button
-              onClick={() => {
-                setOrderAmound((old) => old - 1);
-                setEditAmound((old) => old - 1);
-              }}
-              disabled={orderAmound === 0 || editAmound === 0}
               type="button"
               className="font-bold text-lg"
+              onClick={handleDecreaseAmound}
+              disabled={amound === 0 || !login}
             >
               -
             </button>
           </div>
           <div>
-            <span className="font-bold text-2xl">{editAmound}</span>
+            <span className="font-bold text-2xl">{amound}</span>
           </div>
           <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
             <button
-              onClick={() => {
-                setOrderAmound((old) => old + 1);
-                setEditAmound((old) => old + 1);
-              }}
-              disabled={orderAmound === 10}
               type="button"
               className="font-bold text-lg"
+              disabled={amound === 10 || orderAmound === 10 || !login}
+              onClick={handleIncreaseAmound}
             >
               +
             </button>
           </div>
         </div>
-        <button className="w-[150px] h-10 bg-[#164864] text-white">
-          Poruči {price * editAmound}
+        <button
+          className="w-[150px] h-10 bg-[#164864] text-white"
+          disabled={!login || amound === 0 || selectedCoffeeBean === null}
+        >
+          Poruči {amound * selectedSizePrice}
         </button>
       </div>
     </form>
   );
 };
 
-export default EditModalForm;
+export default TestOrderForm;

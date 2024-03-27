@@ -1,32 +1,34 @@
 import { useState } from "react";
 import { CoffeeCardModal } from "./CoffeeCardModal";
+import { CoffeeOrdarModalTest } from "../testComponents/CoffeeOrderModalTest";
 
-const Card = ({ title, description, price, hasMilk }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+const Card = ({ title, description, price, hasMilk, coffee }) => {
+  const [newCoffee, setNewCoffee] = useState(null);
 
-  function openModal() {
-    setModalOpen(true);
+  function openModal(coffee) {
+    setNewCoffee(coffee);
     document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    setModalOpen(false);
+    setNewCoffee(null);
     document.body.style.overflow = "auto";
   }
 
   return (
     <>
-      {modalOpen ? (
+      {newCoffee && (
         <CoffeeCardModal
+          coffee={newCoffee}
           title={title}
           description={description}
           price={price}
           hasMilk={hasMilk}
           closeModal={closeModal}
         />
-      ) : null}
+      )}
       <li
-        onClick={openModal}
+        onClick={() => openModal(coffee)}
         className="flex justify-center items-center border-black border m-2 bg-gray-200 transform hover:scale-95 transition duration-200"
       >
         <div className="flex justify-between items-center">

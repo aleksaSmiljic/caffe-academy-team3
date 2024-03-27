@@ -1,28 +1,22 @@
 import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
-import EditModal from "../components/EditModal";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
+import { CoffeeOrdarModalTest } from "../testComponents/CoffeeOrderModalTest";
+
 const CartPage = () => {
   const { cart, setCart, setOrderAmound, orderAmound } =
     useContext(OrderContext);
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [editCoffee, setEditCoffee] = useState(null);
 
   function openModal(coffee) {
-    // setModalOpen(true);
-    console.log(coffee);
     setEditCoffee(coffee);
     document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    // setModalOpen(false);
     setEditCoffee(null);
     document.body.style.overflow = "auto";
-  }
-
-  function handleClose(e) {
-    if (e.target.id === "modalWrapper") closeModal();
   }
 
   function handleDelete(id, amound) {
@@ -36,28 +30,22 @@ const CartPage = () => {
         <ul>
           {cart?.map((coffee) => (
             <>
-              {/* {modalOpen ? (
-                <EditModal
-                  handleClose={handleClose}
-                  kay={coffee.id}
-                  hasMilk={coffee.milk ? true : false}
-                  coffee={coffee}
-                  closeModal={closeModal}
-                />
-              ) : null} */}
               {editCoffee && (
                 <CoffeeCardModal
-                  amount={editCoffee.amound}
-                  selectedCoffeeBeann={editCoffee.bean}
-                  coffeeSizee={editCoffee.size}
-                  selectedSizePricee={editCoffee.price}
+                  handleDelete={handleDelete}
+                  editAmount={editCoffee.amound}
+                  editSelectedCoffeeBeann={editCoffee.bean}
+                  editCoffeeSizee={editCoffee.size}
+                  editSelectedSizePricee={editCoffee.price}
                   title={editCoffee.name}
                   description={editCoffee.description}
                   price={editCoffee.price}
                   hasMilk={editCoffee.hasMilk}
                   closeModal={closeModal}
-                  milk={editCoffee.milk}
-                  totalPrice={editCoffee.totalPrice}
+                  //   editMilk={editCoffee.milk}
+                  editMilk={editCoffee.typeOfMilk}
+                  editTotalPrice={editCoffee.totalPrice}
+                  editCoffee={editCoffee}
                 />
               )}
               <li key={coffee.id}>
@@ -66,13 +54,17 @@ const CartPage = () => {
                     <h3 className="text-lg md:text-2xl leading-6 font-medium font-montserrat text-gray-900">
                       {coffee.name}
                     </h3>
-                    <p className="mt-1 max-w-2xl text-sm md:text-xl text-gray-500 font-montserrat">{`${coffee.size}/${coffee.bean}/${coffee.milk}`}</p>
+                    <p className="mt-1 max-w-2xl text-sm md:text-xl text-gray-500 font-montserrat">{`${
+                      coffee.size
+                    }/${coffee.bean}${
+                      coffee.typeOfMilk ? "/" + coffee.typeOfMilk : ""
+                    }`}</p>
                   </div>
                   <div className="mt-4 flex items-center justify-between">
                     <p className="text-sm md:text-lg font-medium font-montserrat text-gray-500">
                       Price:
                       <span className="mx-5 md:text-2xl text-[#164864]">
-                        {coffee.totalPrice},00 RSD
+                        {coffee.price[coffee.size] * coffee.amound},00 RSD
                       </span>
                       <span>({coffee.amound} kom)</span>
                     </p>
@@ -101,11 +93,10 @@ const CartPage = () => {
         <button
           onClick={() => {
             console.log(cart);
-            console.log(orderAmound);
           }}
           className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
         >
-          TOTAL: {cart.reduce((acc, curr) => acc + curr.totalPrice, 0)}
+          TOTAL: {cart?.reduce((acc, curr) => acc + curr.totalPrice, 0)}
         </button>
       </div>
     </div>

@@ -7,3 +7,5 @@
 24.03.2024 - Added functionality to the order modal and limited order amound to 10 coffees
 
 25.03.2024 - Made CartPage to list all of the coffees added to the cart
+
+27.03.2024 - Added Delete and Edit buttons to the Cart Page where user can delete coffees from the cart and edit selected coffees
