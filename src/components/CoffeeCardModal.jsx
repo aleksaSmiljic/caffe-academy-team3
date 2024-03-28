@@ -112,7 +112,6 @@ export function CoffeeCardModal({
         name: coffee.name,
         size: coffeeSize,
         bean: selectedCoffeeBean,
-        // milk: hasMilk,
         typeOfMilk: coffee.milk ? coffeeMilk : null,
         amound: amound,
         priceOfOneCoffee: selectedSizePrice,
