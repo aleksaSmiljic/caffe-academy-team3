@@ -6,7 +6,6 @@ export function CoffeeCardModal({
   coffee,
   editCoffee,
   closeModal,
-  description,
   title,
   hasMilk,
   price,
@@ -132,7 +131,7 @@ export function CoffeeCardModal({
       id="wrapper"
     >
       <div className="w-[500px] m-4">
-        <div className="bg-white p-2 border border-black h-[540px] md:h-[700px] ">
+        <div className="bg-white p-2 border border-black h-[540px] md:h-[650px] ">
           <div className="flex flex-row justify-between my-4 mx-2">
             <div className="flex flex-col ">
               <h1 className="font-semibold text-lg md:text-2xl font-montserrat">

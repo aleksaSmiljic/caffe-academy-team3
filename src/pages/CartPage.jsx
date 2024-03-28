@@ -4,7 +4,8 @@ import { CoffeeCardModal } from "../components/CoffeeCardModal";
 import { Link } from "react-router-dom";
 
 const CartPage = () => {
-  const { cart, setCart, setOrderAmound } = useContext(OrderContext);
+  const { cart, setCart, setOrderAmound, setFinishedOrder, id, setId } =
+    useContext(OrderContext);
 
   const [editCoffee, setEditCoffee] = useState(null);
 
@@ -22,6 +23,13 @@ const CartPage = () => {
   function handleDelete(id, amound) {
     setCart((oldCart) => oldCart.filter((item) => item.id !== id));
     setOrderAmound((old) => old - amound);
+  }
+
+  function handleOrder() {
+    setId((old) => old + 1);
+    setFinishedOrder((old) => [...old, { id: id, order: cart }]);
+    setOrderAmound(0);
+    setCart([]);
   }
 
   return (
@@ -46,22 +54,6 @@ const CartPage = () => {
         <ul>
           {cart?.map((coffee) => (
             <>
-              {/* {editCoffee && (
-                <CoffeeCardModal
-                  editAmount={editCoffee.amound}
-                  editSelectedCoffeeBeann={editCoffee.bean}
-                  editCoffeeSizee={editCoffee.size}
-                  editSelectedSizePricee={editCoffee.price}
-                  title={editCoffee.name}
-                  description={editCoffee.description}
-                  price={editCoffee.price}
-                  hasMilk={editCoffee.hasMilk}
-                  closeModal={closeModal}
-                  editMilk={editCoffee.typeOfMilk}
-                  editTotalPrice={editCoffee.totalPrice}
-                  editCoffee={editCoffee}
-                />
-              )} */}
               <li key={coffee.id}>
                 <div className="px-4 py-5 sm:px-6 border-b-2">
                   <div className="flex items-center justify-between">
@@ -106,8 +98,9 @@ const CartPage = () => {
       <div className="flex justify-end mx-4 my-4">
         <Link to="/status">
           <button
+            disabled={cart.length === 0}
             onClick={() => {
-              console.log(cart);
+              handleOrder();
             }}
             className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
           >

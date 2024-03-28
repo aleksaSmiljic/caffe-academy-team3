@@ -7,6 +7,8 @@ export const OrderContextProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(1);
   const [orderAmound, setOrderAmound] = useState(0);
   const [amound, setAmound] = useState(0);
+  const [finishedOrder, setFinishedOrder] = useState([]);
+  const [id, setId] = useState(0);
 
   useMemo(() => {
     {
@@ -17,9 +19,13 @@ export const OrderContextProvider = ({ children }) => {
         orderAmound,
         setOrderAmound,
         amound,
-        setAmound;
+        setAmound,
+        finishedOrder,
+        setFinishedOrder,
+        id,
+        setId;
     }
-  }, [cart, orderId, orderAmound, amound]);
+  }, [cart, orderId, orderAmound, amound, finishedOrder, id]);
 
   return (
     <OrderContext.Provider
@@ -32,6 +38,10 @@ export const OrderContextProvider = ({ children }) => {
         setOrderAmound,
         amound,
         setAmound,
+        setFinishedOrder,
+        finishedOrder,
+        id,
+        setId,
       }}
     >
       {children}

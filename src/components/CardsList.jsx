@@ -21,14 +21,7 @@ export function CardsList() {
   return (
     <div className="">
       {newCoffee && (
-        <CoffeeCardModal
-          coffee={newCoffee}
-          // title={title}
-          // description={description}
-          // price={price}
-          // hasMilk={hasMilk}
-          closeModal={closeModal}
-        />
+        <CoffeeCardModal coffee={newCoffee} closeModal={closeModal} />
       )}
       <ul className="w-full lg:max-w-full grid grid-cols-1 md:grid-cols-2 ">
         {coffeList?.map((coffee) => (
