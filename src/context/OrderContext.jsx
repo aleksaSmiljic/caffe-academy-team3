@@ -8,7 +8,7 @@ export const OrderContextProvider = ({ children }) => {
   const [orderAmound, setOrderAmound] = useState(0);
   const [amound, setAmound] = useState(0);
   const [finishedOrder, setFinishedOrder] = useState([]);
-  const [id, setId] = useState(0);
+  const [id, setId] = useState(1);
 
   useMemo(() => {
     {

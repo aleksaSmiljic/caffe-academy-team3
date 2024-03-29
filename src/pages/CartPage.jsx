@@ -26,8 +26,12 @@ const CartPage = () => {
   }
 
   function handleOrder() {
+    const totalPrice = cart?.reduce((acc, curr) => acc + curr.totalPrice, 0);
     setId((old) => old + 1);
-    setFinishedOrder((old) => [...old, { id: id, order: cart }]);
+    setFinishedOrder((old) => [
+      ...old,
+      { id: id, order: cart, totalPrice: totalPrice },
+    ]);
     setOrderAmound(0);
     setCart([]);
   }

@@ -3,7 +3,7 @@ const Card = ({ title, description, price, hasMilk, coffee, openModal }) => {
     <>
       <li
         onClick={() => openModal(coffee)}
-        className="flex justify-center items-center border-black border m-2 bg-gray-200 transform hover:scale-95 transition duration-200"
+        className="flex justify-center items-center border-black border m-2 bg-gray-200 hover:bg-gray-300 transform hover:scale-95 transition duration-200 rounded-lg"
       >
         <div className="flex justify-between items-center">
           <div className="p-2 md:left-2">
