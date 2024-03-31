@@ -194,7 +194,7 @@ const OrderModalForm = ({
       </div>
       <div className="flex justify-center items-center ">
         <div className="h-10 bg-gray-300 text-black border mx-2 flex flex-row justify-between items-center w-[200px] md:w-[250] rounded-md">
-          <div className="border-2 border-[#248CC5] hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:ml-2 ml-1 transform hover:scale-90 transition duration-200">
+          <div className="border-2 border-[#248CC5] md:hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:ml-2 ml-1 transform md:hover:scale-90 transition duration-200">
             <button
               type="button"
               className="font-bold text-xl"
@@ -207,7 +207,7 @@ const OrderModalForm = ({
           <div>
             <span className="font-bold text-2xl">{amound}</span>
           </div>
-          <div className="border-2 border-[#248CC5] hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:mr-2 mr-1 transform hover:scale-90 transition duration-200">
+          <div className="border-2 border-[#248CC5] md:hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:mr-2 mr-1 transform md:hover:scale-90 transition duration-200">
             <button
               type="button"
               className="font-bold text-xl"
