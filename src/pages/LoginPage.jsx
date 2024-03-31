@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { LoginContext } from "../context/loginContext";
@@ -23,6 +23,7 @@ export function LoginPage() {
     setCart([]);
     setOrderAmound(0);
   }
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,6 +33,7 @@ export function LoginPage() {
       localStorageData.password === password
     ) {
       setLogin(true);
+      navigate("/");
     } else {
       alert("Invalid email or password!");
     }
@@ -41,13 +43,13 @@ export function LoginPage() {
     <div className="flex flex-col bg-white items-center justify-center w-full h-screen">
       {login ? (
         <div>
-          <p>Uspesno ste se prijavili</p>
-          <button className="block border bg-blue-300 py-2 px-3 rounded-md transform hover:scale-95 transition duration-200">
+          <p className="text-3xl font-montserrat">Uspesno ste se prijavili</p>
+          <button className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md font-montserrat">
             <Link to="/">Home Page</Link>
           </button>
           <button
             onClick={handleLogOut}
-            className="block border bg-blue-300 py-2 px-3 rounded-md transform hover:scale-95 transition duration-200"
+            className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md font-montserrat"
           >
             <Link to="/login">Log Out</Link>
           </button>
@@ -56,7 +58,7 @@ export function LoginPage() {
         <>
           <div className="w-full pb-20 flex justify-center items-center flex-col">
             <InformationCircleIcon className="w-10 h-10 text-[#248CC5]" />
-            <p className="font-montserrat text-[#248CC5] w-[300px]">
+            <p className="font-montserrat text-[#248CC5] w-[300px] text-center">
               Da bi zavrišili porudžbinu, potrebno je da budete registrovani.
             </p>
           </div>

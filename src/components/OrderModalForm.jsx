@@ -15,8 +15,6 @@ const OrderModalForm = ({
   amound,
   coffee,
   editCoffee,
-  coffeeSize,
-  coffeeMilk,
 }) => {
   const { login } = useContext(LoginContext);
   const { orderAmound } = useContext(OrderContext);
@@ -53,10 +51,9 @@ const OrderModalForm = ({
               handleSizePickPrice(e, editCoffee ?? coffee);
               handleInputChange(e);
             }}
-            // checked={coffeeSize === "small" || editCoffee?.size === "small"}
             checked={checkedFields.size === "small"}
           />
-          <span className="mx-2">Mala</span>
+          <span className="mx-2 font-montserrat">Mala</span>
         </label>
         <label className="flex justify-between">
           <div>
@@ -71,10 +68,10 @@ const OrderModalForm = ({
               }}
               checked={checkedFields.size === "medium"}
             />
-            <span className="mx-2">Srednja</span>
+            <span className="mx-2 font-montserrat">Srednja</span>
           </div>
           <div>
-            <span className="text-[#248CC5]">+10,00 RSD</span>
+            <span className="text-[#248CC5] font-montserrat">+10,00 RSD</span>
           </div>
         </label>
         <label className="flex justify-between">
@@ -90,10 +87,10 @@ const OrderModalForm = ({
               }}
               checked={checkedFields.size === "large"}
             />
-            <span className="mx-2">Velika</span>
+            <span className="mx-2 font-montserrat">Velika</span>
           </div>
           <div>
-            <span className="text-[#248CC5]">+20,00 RSD</span>
+            <span className="text-[#248CC5] font-montserrat">+20,00 RSD</span>
           </div>
         </label>
       </div>
@@ -112,13 +109,9 @@ const OrderModalForm = ({
                   handleCoffeeBeanPick(e, editCoffee ?? coffee);
                   handleInputChange(e);
                 }}
-                // checked={
-                //   selectedCoffeeBean === "brazil" ||
-                //   editCoffee?.bean === "brazil"
-                // }
                 checked={checkedFields.bean === "brazil"}
               />
-              <span className="mx-2">Brazil</span>
+              <span className="mx-2 font-montserrat">Brazil</span>
             </label>
             <label className="">
               <input
@@ -131,7 +124,7 @@ const OrderModalForm = ({
                 }}
                 checked={checkedFields.bean === "kuba"}
               />
-              <span className="mx-2">Kuba</span>
+              <span className="mx-2 font-montserrat">Kuba</span>
             </label>
             <label className="">
               <input
@@ -144,7 +137,7 @@ const OrderModalForm = ({
                 }}
                 checked={checkedFields.bean === "etiopija"}
               />
-              <span className="mx-2">Etiopija</span>
+              <span className="mx-2 font-montserrat">Etiopija</span>
             </label>
           </div>
         </div>
@@ -164,13 +157,9 @@ const OrderModalForm = ({
                       handleMilkPick(e, editCoffee ?? coffee);
                       handleInputChange(e);
                     }}
-                    // checked={
-                    //   coffeeMilk === "regular" ||
-                    //   editCoffee?.typeOfMilk === "regular"
-                    // }
                     checked={checkedFields.milk === "regular"}
                   />
-                  <span className="mx-2">Regularno</span>
+                  <span className="mx-2 font-montserrat">Regularno</span>
                 </label>
                 <label className="">
                   <input
@@ -183,7 +172,7 @@ const OrderModalForm = ({
                     }}
                     checked={checkedFields.milk === "soy"}
                   />
-                  <span className="mx-2">Sojno</span>
+                  <span className="mx-2 font-montserrat">Sojno</span>
                 </label>
                 <label className="">
                   <input
@@ -196,19 +185,19 @@ const OrderModalForm = ({
                     }}
                     checked={checkedFields.milk === "almond"}
                   />
-                  <span className="mx-2">Bademovo</span>
+                  <span className="mx-2 font-montserrat">Bademovo</span>
                 </label>
               </div>
             </div>
           ) : null}
         </div>
       </div>
-      <div className="flex flex-row">
-        <div className="w-[150px] h-10 bg-gray-300 text-black border border-black mx-2 flex flex-row justify-between items-center">
-          <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
+      <div className="flex justify-center items-center ">
+        <div className="h-10 bg-gray-300 text-black border mx-2 flex flex-row justify-between items-center w-[200px] md:w-[250] rounded-md">
+          <div className="border-2 border-[#248CC5] hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:ml-2 ml-1 transform hover:scale-90 transition duration-200">
             <button
               type="button"
-              className="font-bold text-lg"
+              className="font-bold text-xl"
               onClick={handleDecreaseAmound}
               disabled={amound === 0 || !login}
             >
@@ -218,10 +207,10 @@ const OrderModalForm = ({
           <div>
             <span className="font-bold text-2xl">{amound}</span>
           </div>
-          <div className="border-2 border-[#164864] rounded-full w-5 h-5 flex justify-center items-center mx-4">
+          <div className="border-2 border-[#248CC5] hover:border-[#164864] rounded-full w-7 h-7 flex justify-center items-center md:mr-2 mr-1 transform hover:scale-90 transition duration-200">
             <button
               type="button"
-              className="font-bold text-lg"
+              className="font-bold text-xl"
               disabled={amound === 10 || orderAmound === 10 || !login}
               onClick={handleIncreaseAmound}
             >
@@ -230,10 +219,10 @@ const OrderModalForm = ({
           </div>
         </div>
         <button
-          className="w-[150px] h-10 bg-[#164864] text-white"
+          className="h-10 bg-[#248CC5] hover:bg-[#164864] duration-300 text-white font-montserrat w-full rounded-md"
           disabled={!login || amound === 0 || selectedCoffeeBean === null}
         >
-          Poruči {amound * selectedSizePrice}
+          <div>Poruči {amound * selectedSizePrice}</div>
         </button>
       </div>
     </form>

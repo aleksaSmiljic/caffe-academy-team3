@@ -35,13 +35,15 @@ export function RegisterPage() {
   return (
     <div className="flex flex-col bg-white items-center justify-center w-full h-screen">
       {login ? (
-        <div>
-          <h2>Uspešno ste se registrovali!</h2>
-          <h2>
+        <div className="flex justify-center items-center flex-col">
+          <h2 className="text-3xl font-montserrat">
+            Uspešno ste se registrovali!
+          </h2>
+          <h2 className="text-lg m-6 text-center font-montserrat">
             Čestitamo! Uspešno ste se registrovali. Sada možete uživati u brzom
             i jednostavnom naručivanju omiljene kafe online!
           </h2>
-          <button className="block py-2 px-4 m-2 rounded-md border bg-blue-400">
+          <button className="block py-2 px-4 my-10 w-[200px] text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md font-montserrat">
             <Link to="/">Home Page</Link>
           </button>
         </div>
@@ -49,14 +51,14 @@ export function RegisterPage() {
         <>
           <div className="w-full pb-20 flex justify-center items-center flex-col">
             <InformationCircleIcon className="w-10 h-10 text-[#248CC5]" />
-            <p className="font-montserrat text-[#248CC5] w-[300px]">
+            <p className="font-montserrat text-[#248CC5] w-[300px] text-center">
               Da bi zavrišili porudžbinu, potrebno je da budete registrovani.
             </p>
           </div>
           <div className="w-full">
             <form
               onSubmit={handleSubmit}
-              className="flex justify-center items-center flex-col"
+              className={`flex justify-center items-center flex-col`}
             >
               <label className="font-montserrat w-full px-4 md:w-[400px] m-2">
                 Ime i Prezime
@@ -65,9 +67,11 @@ export function RegisterPage() {
                   required
                   value={registerForm.fullName}
                   type="text"
-                  className="block border border-black w-full h-8"
+                  className={`block w-full h-8 border border-black `}
                   name="fullName"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
                 />
               </label>
               <label className="font-montserrat w-full px-4 md:w-[400px] m-2">
@@ -79,7 +83,9 @@ export function RegisterPage() {
                   type="email"
                   className="block border border-black w-full h-8"
                   name="email"
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                  }}
                 />
               </label>
               <label className="font-montserrat w-full px-4 md:w-[400px] m-2">
@@ -109,7 +115,7 @@ export function RegisterPage() {
                 <Link to="/login">Već imate kreiran nalog? Prijavite se</Link>
               </p>
               <div className="w-full px-4 md:w-[400px]">
-                <button className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md">
+                <button className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md font-montserrat">
                   Registruj se
                 </button>
               </div>
