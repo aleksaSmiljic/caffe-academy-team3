@@ -36,7 +36,7 @@ export function RegisterPage() {
     <div className="flex flex-col bg-white items-center justify-center w-full h-screen">
       {login ? (
         <div className="flex justify-center items-center flex-col">
-          <h2 className="text-3xl font-montserrat">
+          <h2 className="text-3xl font-montserrat text-center">
             Uspešno ste se registrovali!
           </h2>
           <h2 className="text-lg m-6 text-center font-montserrat">

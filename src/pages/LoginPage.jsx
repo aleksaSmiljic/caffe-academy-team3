@@ -43,7 +43,9 @@ export function LoginPage() {
     <div className="flex flex-col bg-white items-center justify-center w-full h-screen">
       {login ? (
         <div>
-          <p className="text-3xl font-montserrat">Uspesno ste se prijavili</p>
+          <p className="text-3xl font-montserrat text-center">
+            Uspesno ste se prijavili
+          </p>
           <button className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md font-montserrat">
             <Link to="/">Home Page</Link>
           </button>
