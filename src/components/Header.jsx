@@ -7,18 +7,22 @@ import {
 } from "@heroicons/react/24/solid";
 import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
+import { LoginContext } from "../context/loginContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { cart } = useContext(OrderContext);
+  const { login } = useContext(LoginContext);
 
   let Links = [
     { name: "Home", link: "/" },
-    { name: "Login", link: "/login" },
-    { name: "Register", link: "/register" },
     { name: "Status", link: "/status" },
     { name: "Admin", link: "/admin" },
+    login
+      ? { name: "Logout", link: "/login" }
+      : { name: "Login", link: "/login" },
+    login ? "" : { name: "Register", link: "/register" },
   ];
 
   function handleCloseClick() {
@@ -87,7 +91,9 @@ const Header = () => {
               <li
                 onClick={handleCloseClick}
                 key={link.link}
-                className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
+                className={`hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 ${
+                  login ? "md:ml-10" : "md:mr-10"
+                }`}
               >
                 <Link to={link.link}>{link.name}</Link>
               </li>
