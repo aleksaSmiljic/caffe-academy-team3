@@ -27,7 +27,9 @@ export function CoffeeCardModal({
   const { setCart, orderId, setOrderId, setOrderAmound, orderAmound } =
     useContext(OrderContext);
 
-  const [amound, setAmound] = useState(editCoffee?.amound ?? 0);
+  //PROMENIO SAM SA 0 NA 1 POCETNU KOLICINU
+  const [amound, setAmound] = useState(editCoffee?.amound ?? 1);
+  // const [editAmount, setEditAmount] = useState(editCoffee?.amound ?? null);
 
   const [selectedCoffeeBean, setSelectedCoffeeBean] = useState(
     editCoffee?.bean ?? "brazil"
@@ -73,18 +75,23 @@ export function CoffeeCardModal({
 
   function handleIncreaseAmound() {
     setAmound((old) => old + 1);
-    setOrderAmound((old) => old + 1);
     console.log(orderAmound);
   }
 
   function handleDecreaseAmound() {
     setAmound((old) => old - 1);
-    setOrderAmound((old) => old - 1);
     console.log(orderAmound);
   }
 
   function handleSubmitOrder(e, coffee) {
     e.preventDefault();
+    if (!editCoffee?.amound) {
+      setOrderAmound((old) => old + amound);
+    } else if (amound - editCoffee?.amound > 0) {
+      setOrderAmound((old) => old + (amound - editCoffee?.amound));
+    } else if (amound - editCoffee?.amound < 0) {
+      setOrderAmound((old) => old - (editCoffee?.amound - amound));
+    }
 
     if (coffee?.hasOwnProperty("totalPrice")) {
       const coffeEdit = cart.map((item) => {

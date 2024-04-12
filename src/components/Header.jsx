@@ -99,7 +99,10 @@ const Header = () => {
               </li>
             ))}
             {cart?.length > 0 ? (
-              <li className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10">
+              <li
+                onClick={handleCloseClick}
+                className="hover:text-blue-400 duration-500 block md:inline-block mt-2 md:mt-2 mr-10"
+              >
                 <Link to="/cart">Cart</Link>
               </li>
             ) : null}

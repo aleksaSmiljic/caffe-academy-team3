@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { LoginContext } from "../context/loginContext";
 import { OrderContext } from "../context/OrderContext";
 
 const OrderModalForm = ({
@@ -16,13 +15,14 @@ const OrderModalForm = ({
   coffee,
   editCoffee,
 }) => {
-  const { login } = useContext(LoginContext);
   const { orderAmound } = useContext(OrderContext);
   const [checkedFields, setCheckedFilds] = useState({
-    size: editCoffee?.size ?? "",
-    bean: editCoffee?.bean ?? "",
-    milk: editCoffee?.typeOfMilk ?? "",
+    size: editCoffee?.size ?? "small",
+    bean: editCoffee?.bean ?? "brazil",
+    milk: editCoffee?.typeOfMilk ?? "regular",
   });
+
+  let isDisabled = false;
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -30,6 +30,31 @@ const OrderModalForm = ({
       ...prev,
       [name]: value,
     }));
+  }
+
+  function disableOrder() {
+    if (!editCoffee?.amound) {
+      if (orderAmound + amound > 10) {
+        isDisabled = true;
+        return true;
+      } else {
+        isDisabled = false;
+        return false;
+      }
+    } else if (editCoffee?.amound > amound) {
+      isDisabled = false;
+
+      return false;
+    } else if (editCoffee?.amound < amound) {
+      if (amound - editCoffee.amound + orderAmound > 10) {
+        isDisabled = true;
+        return true;
+      } else {
+        isDisabled = false;
+
+        return false;
+      }
+    }
   }
 
   return (
@@ -199,7 +224,7 @@ const OrderModalForm = ({
               type="button"
               className="font-bold text-xl"
               onClick={handleDecreaseAmound}
-              disabled={amound === 0 || !login}
+              disabled={amound === 0}
             >
               -
             </button>
@@ -211,7 +236,7 @@ const OrderModalForm = ({
             <button
               type="button"
               className="font-bold text-xl"
-              disabled={amound === 10 || orderAmound === 10 || !login}
+              disabled={amound === 10}
               onClick={handleIncreaseAmound}
             >
               +
@@ -219,12 +244,22 @@ const OrderModalForm = ({
           </div>
         </div>
         <button
+          id="orderBtn"
           className="h-10 bg-[#248CC5] hover:bg-[#164864] duration-300 text-white font-montserrat w-full rounded-md"
-          disabled={!login || amound === 0 || selectedCoffeeBean === null}
+          disabled={
+            amound === 0 || selectedCoffeeBean === null || disableOrder()
+          }
         >
           <div>Poruči {amound * selectedSizePrice}</div>
         </button>
       </div>
+      {isDisabled ? (
+        <p className="mt-2 mx-2 flex justify-center text-red-400 font-medium font-montserrat md:text-lg text-sm">
+          Maksimum od 10 kafa po porudžbini
+        </p>
+      ) : (
+        ""
+      )}
     </form>
   );
 };
