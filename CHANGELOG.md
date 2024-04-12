@@ -9,3 +9,5 @@
 25.03.2024 - Made CartPage to list all of the coffees added to the cart
 
 27.03.2024 - Added Delete and Edit buttons to the Cart Page where user can delete coffees from the cart and edit selected coffees
+
+13.04.2024 - Fixed bugs for login/logout, order amount limit and users can now put coffees into a cart without being loged in but cannot order it

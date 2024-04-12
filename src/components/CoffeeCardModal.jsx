@@ -27,9 +27,7 @@ export function CoffeeCardModal({
   const { setCart, orderId, setOrderId, setOrderAmound, orderAmound } =
     useContext(OrderContext);
 
-  //PROMENIO SAM SA 0 NA 1 POCETNU KOLICINU
   const [amound, setAmound] = useState(editCoffee?.amound ?? 1);
-  // const [editAmount, setEditAmount] = useState(editCoffee?.amound ?? null);
 
   const [selectedCoffeeBean, setSelectedCoffeeBean] = useState(
     editCoffee?.bean ?? "brazil"
