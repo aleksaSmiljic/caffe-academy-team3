@@ -12,6 +12,7 @@ import Layout from "./pages/Layout.jsx";
 import { LoginContextProvider } from "./context/loginContext.jsx";
 import { OrderContextProvider } from "./context/OrderContext.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartPage />,
+      },
+      {
+        path: "/password-reset",
+        element: <ResetPasswordPage />,
       },
     ],
   },

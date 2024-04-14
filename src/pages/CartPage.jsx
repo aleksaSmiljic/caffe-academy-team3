@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 
 const CartPage = () => {
@@ -11,6 +11,8 @@ const CartPage = () => {
   const { login } = useContext(LoginContext);
 
   const [editCoffee, setEditCoffee] = useState(null);
+
+  const navigate = useNavigate();
 
   function openModal(coffee) {
     setEditCoffee(coffee);
@@ -101,17 +103,20 @@ const CartPage = () => {
         </ul>
       </div>
       <div className="flex justify-end mx-4 my-4">
-        <Link to="/status">
-          <button
-            disabled={cart.length === 0 || !login}
-            onClick={() => {
+        <button
+          disabled={cart.length === 0}
+          onClick={() => {
+            if (login) {
               handleOrder();
-            }}
-            className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
-          >
-            TOTAL: {cart?.reduce((acc, curr) => acc + curr.totalPrice, 0)}
-          </button>
-        </Link>
+              navigate("/status");
+            } else {
+              navigate("/login");
+            }
+          }}
+          className="text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
+        >
+          TOTAL: {cart?.reduce((acc, curr) => acc + curr.totalPrice, 0)}
+        </button>
       </div>
       {login ? (
         ""

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import { LoginContext } from "../context/loginContext";
 import { OrderContext } from "../context/OrderContext";
+import ResetPasswordForm from "./ResetPasswordPage";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
@@ -95,6 +96,14 @@ export function LoginPage() {
               <p className="underline font-montserrat text-sm text-[#248CC5]">
                 <Link to="/register">Želim da se registrujem</Link>
               </p>
+              <div>
+                <Link
+                  to="/password-reset"
+                  className="underline font-montserrat text-sm text-[#248CC5]"
+                >
+                  Zaboravio sam šifru
+                </Link>
+              </div>
               <div className="w-full px-4 md:w-[400px]">
                 <button className="block py-2 px-4 my-10 w-full text-xl md:text-2xl text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md">
                   Prijavi se
