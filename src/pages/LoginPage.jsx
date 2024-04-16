@@ -30,8 +30,8 @@ export function LoginPage() {
     e.preventDefault();
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     if (
-      localStorageData.email === email &&
-      localStorageData.password === password
+      localStorageData?.email === email &&
+      localStorageData?.password === password
     ) {
       setLogin(true);
       navigate("/");
