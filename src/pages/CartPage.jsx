@@ -9,7 +9,6 @@ const CartPage = () => {
     useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
-  const { status } = useContext(OrderContext);
 
   const [editCoffee, setEditCoffee] = useState(null);
 
@@ -40,9 +39,10 @@ const CartPage = () => {
         id: id,
         order: cart,
         totalPrice: totalPrice,
-        status: status,
       },
     ]);
+    const status = { ...cart, status: "Primljena porudžbina" };
+    localStorage.setItem(`order${id}`, JSON.stringify(status));
     setOrderAmound(0);
     setCart([]);
   }

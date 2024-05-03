@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const AdminStatusCard = ({ orderList }) => {
-  const localStorageDataOrder = JSON.parse(
+  let localStorageDataOrder = JSON.parse(
     localStorage.getItem(`order${orderList.id}`)
   );
 
-  const [status, setStatus] = useState("Primljena porudžbina");
+  const [orderStatus, setOrderStatus] = useState(localStorageDataOrder.status);
 
   const orderStatusObj = {
     inTheMaking: "Priprema se",
@@ -13,23 +13,22 @@ const AdminStatusCard = ({ orderList }) => {
   };
 
   function handleStatus() {
-    if (status === "Primljena porudžbina") {
-      setStatus(orderStatusObj.inTheMaking);
-      localStorage.setItem(
-        `order${orderList.id}`,
-        JSON.stringify(orderStatusObj.inTheMaking)
-      );
+    if (localStorageDataOrder.status === orderStatusObj.inTheMaking) {
+      const newLS = localStorageDataOrder;
+      newLS.status = orderStatusObj.done;
+      localStorage.setItem(`order${orderList.id}`, JSON.stringify(newLS));
+      localStorageDataOrder = newLS;
+      setOrderStatus(localStorageDataOrder.status);
     }
-    if (status === orderStatusObj.inTheMaking) {
-      setStatus(orderStatusObj.done);
-      localStorage.setItem(
-        `order${orderList.id}`,
-        JSON.stringify(orderStatusObj.done)
-      );
+    if (localStorageDataOrder.status === "Primljena porudžbina") {
+      const newLS = localStorageDataOrder;
+      newLS.status = orderStatusObj.inTheMaking;
+      localStorage.setItem(`order${orderList.id}`, JSON.stringify(newLS));
+      localStorageDataOrder = newLS;
+      setOrderStatus(localStorageDataOrder.status);
     }
-    if (status === orderStatusObj.done) {
-      localStorage.removeItem(`order${orderList.id}`);
-    }
+
+    console.log(localStorageDataOrder);
   }
 
   return (
@@ -45,7 +44,7 @@ const AdminStatusCard = ({ orderList }) => {
         onClick={handleStatus}
         className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
       >
-        {status}
+        {orderStatus}
       </button>
       <div className="flex flex-col">
         {orderList?.order?.map((coffee) => (
