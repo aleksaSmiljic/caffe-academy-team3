@@ -1,6 +1,8 @@
-import React from "react";
-
 const StatusPageCard = ({ orderList }) => {
+  const localStorageDataOrder = JSON.parse(
+    localStorage.getItem(`order${orderList.id}`)
+  );
+
   return (
     <li
       className={
@@ -22,6 +24,7 @@ const StatusPageCard = ({ orderList }) => {
       <h1 className="absolute right-2 bottom-2 text-2xl font-bold text-[#164864] font-montserrat">
         Total Price: {orderList.totalPrice},00 RSD
       </h1>
+      {/* <p>Status: {localStorageDataOrder ?? "Primljena porudžbina"}</p> */}
     </li>
   );
 };

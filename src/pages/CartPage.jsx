@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 
 const CartPage = () => {
@@ -9,6 +9,7 @@ const CartPage = () => {
     useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
+  const { status } = useContext(OrderContext);
 
   const [editCoffee, setEditCoffee] = useState(null);
 
@@ -35,7 +36,12 @@ const CartPage = () => {
     setId((old) => old + 1);
     setFinishedOrder((old) => [
       ...old,
-      { id: id, order: cart, totalPrice: totalPrice },
+      {
+        id: id,
+        order: cart,
+        totalPrice: totalPrice,
+        status: status,
+      },
     ]);
     setOrderAmound(0);
     setCart([]);

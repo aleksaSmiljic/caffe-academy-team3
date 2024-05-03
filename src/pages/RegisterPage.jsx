@@ -11,7 +11,7 @@ export function RegisterPage() {
     passwordAgain: "",
   });
 
-  const { login, setLogin } = useContext(LoginContext);
+  const { login, setLogin, isAdmin, setIsAdmin } = useContext(LoginContext);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
@@ -24,8 +24,14 @@ export function RegisterPage() {
   function handleSubmit(e) {
     e.preventDefault();
     if (registerForm.password === registerForm.passwordAgain) {
-      setLogin(true);
-      localStorage.setItem("user", JSON.stringify(registerForm));
+      if (registerForm.email.includes("@coffee.com")) {
+        setIsAdmin(true);
+        setLogin(true);
+        localStorage.setItem("admin", JSON.stringify(registerForm));
+      } else {
+        setLogin(true);
+        localStorage.setItem("user", JSON.stringify(registerForm));
+      }
     } else {
       alert("PASSWORDS NOT MATCHING");
       setLogin(false);

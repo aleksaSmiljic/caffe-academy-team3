@@ -9,7 +9,7 @@ export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, setLogin } = useContext(LoginContext);
+  const { login, setLogin, setIsAdmin, isAdmin } = useContext(LoginContext);
   const { setCart, setOrderAmound } = useContext(OrderContext);
 
   function handleEmailChange(e) {
@@ -23,16 +23,24 @@ export function LoginPage() {
     setLogin(false);
     setCart([]);
     setOrderAmound(0);
+    setIsAdmin(false);
   }
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    const localStorageDataUser = JSON.parse(localStorage.getItem("user"));
+    const localStorageDataAdmin = JSON.parse(localStorage.getItem("admin"));
     if (
-      localStorageData?.email === email &&
-      localStorageData?.password === password
+      (localStorageDataUser?.email === email &&
+        localStorageDataUser?.password === password) ||
+      (localStorageDataAdmin?.email === email &&
+        localStorageDataAdmin?.password === password)
     ) {
+      if (email.includes("@coffee.com")) {
+        setIsAdmin(true);
+        console.log(isAdmin);
+      }
       setLogin(true);
       navigate("/");
     } else {
