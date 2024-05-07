@@ -3,10 +3,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ResetPasswordPage = () => {
+  const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newPasswordAgain, setNewPasswordAgain] = useState("");
 
   const navigate = useNavigate();
+
+  function handleEmailChange(e) {
+    setEmail(e.target.value);
+  }
 
   function handlePasswordChange(e) {
     setNewPassword(e.target.value);
@@ -19,15 +24,30 @@ const ResetPasswordPage = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const localStorageData = JSON.parse(localStorage.getItem("user"));
+    const localStorageDataAdmin = JSON.parse(localStorage.getItem("admin"));
 
-    if (newPassword === newPasswordAgain) {
-      localStorageData.password = newPassword;
-      localStorageData.passwordAgain = newPassword;
-      console.log(localStorageData);
-      localStorage.setItem("user", JSON.stringify(localStorageData));
-      navigate("/login");
+    if (localStorageDataAdmin && localStorageDataAdmin?.email === email) {
+      if (newPassword === newPasswordAgain) {
+        localStorageDataAdmin.password = newPassword;
+        localStorageDataAdmin.passwordAgain = newPassword;
+        console.log(localStorageDataAdmin);
+        localStorage.setItem("admin", JSON.stringify(localStorageDataAdmin));
+        navigate("/login");
+      } else {
+        alert("PASSWORDS NOT MATCHING");
+      }
+    } else if (localStorageData && localStorageData?.email) {
+      if (newPassword === newPasswordAgain) {
+        localStorageData.password = newPassword;
+        localStorageData.passwordAgain = newPassword;
+        console.log(localStorageData);
+        localStorage.setItem("user", JSON.stringify(localStorageData));
+        navigate("/login");
+      } else {
+        alert("PASSWORDS NOT MATCHING");
+      }
     } else {
-      alert("PASSWORDS NOT MATCHING");
+      alert("INCORRECT EMAIL");
     }
   }
 
@@ -47,6 +67,19 @@ const ResetPasswordPage = () => {
           >
             <label
               htmlFor="Email"
+              className="font-montserrat w-full px-4 md:w-[400px] m-2"
+            >
+              Email
+              <input
+                required
+                type="email"
+                className="block border border-black w-full h-8"
+                value={email}
+                onChange={(e) => handleEmailChange(e)}
+              />
+            </label>
+            <label
+              htmlFor="Password"
               className="font-montserrat w-full px-4 md:w-[400px] m-2"
             >
               Nova Šifra

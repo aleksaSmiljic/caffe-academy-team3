@@ -1,12 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 
 const CartPage = () => {
-  const { cart, setCart, setOrderAmound, setFinishedOrder, id, setId } =
-    useContext(OrderContext);
+  const {
+    cart,
+    setCart,
+    setOrderAmound,
+    setFinishedOrder,
+    finishedOrder,
+    id,
+    setId,
+  } = useContext(OrderContext);
+
+  const { cartChannel } = useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
 
@@ -39,12 +48,14 @@ const CartPage = () => {
         id: id,
         order: cart,
         totalPrice: totalPrice,
+        status: "Primljena porudžbina",
       },
     ]);
-    const status = { ...cart, status: "Primljena porudžbina" };
-    localStorage.setItem(`order${id}`, JSON.stringify(status));
+    localStorage.setItem(`cart`, JSON.stringify(finishedOrder));
     setOrderAmound(0);
     setCart([]);
+    console.log(finishedOrder);
+    cartChannel.postMessage(finishedOrder);
   }
 
   return (
@@ -114,6 +125,7 @@ const CartPage = () => {
           onClick={() => {
             if (login) {
               handleOrder();
+              // cartChannel.postMessage(finishedOrder);
               navigate("/status");
             } else {
               navigate("/login");

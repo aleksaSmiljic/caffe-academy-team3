@@ -10,7 +10,8 @@ export const OrderContextProvider = ({ children }) => {
   const [finishedOrder, setFinishedOrder] = useState([]);
   const [id, setId] = useState(1);
 
-  const broadcastChannel = new BroadcastChannel("orderStatus");
+  const channel = new BroadcastChannel("channel");
+  const cartChannel = new BroadcastChannel("cartChannel");
 
   useMemo(() => {
     {
@@ -44,7 +45,8 @@ export const OrderContextProvider = ({ children }) => {
         finishedOrder,
         id,
         setId,
-        broadcastChannel,
+        channel,
+        cartChannel,
       }}
     >
       {children}

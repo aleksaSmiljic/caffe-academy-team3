@@ -13,12 +13,13 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { cart } = useContext(OrderContext);
-  const { login } = useContext(LoginContext);
+  const { login, isAdmin } = useContext(LoginContext);
 
   let Links = [
     { name: "Home", link: "/" },
-    { name: "Status", link: "/status" },
-    { name: "Admin", link: "/admin" },
+    isAdmin
+      ? { name: "Admin", link: "/admin" }
+      : { name: "Status", link: "/status" },
     login
       ? { name: "Logout", link: "/login" }
       : { name: "Login", link: "/login" },

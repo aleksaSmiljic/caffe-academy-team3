@@ -1,34 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { OrderContext } from "../context/OrderContext";
 
 const AdminStatusCard = ({ orderList }) => {
-  let localStorageDataOrder = JSON.parse(
-    localStorage.getItem(`order${orderList.id}`)
-  );
+  // let localStorageDataOrder = JSON.parse(
+  //   localStorage.getItem(`order${orderList.id}`)
+  // );
 
-  const [orderStatus, setOrderStatus] = useState(localStorageDataOrder.status);
+  // const localStorageDataOrder = JSON.parse(localStorage.getItem("channelCart"));
+  const { channel } = useContext(OrderContext);
 
-  const orderStatusObj = {
-    inTheMaking: "Priprema se",
-    done: "Spremno",
-  };
+  const localStorageDataOrder = JSON.parse(localStorage.getItem("channelCart"));
+  const data = localStorageDataOrder[orderList.id - 1];
+
+  const [orderStatus, setOrderStatus] = useState(orderList.status);
 
   function handleStatus() {
-    if (localStorageDataOrder.status === orderStatusObj.inTheMaking) {
-      const newLS = localStorageDataOrder;
-      newLS.status = orderStatusObj.done;
-      localStorage.setItem(`order${orderList.id}`, JSON.stringify(newLS));
-      localStorageDataOrder = newLS;
-      setOrderStatus(localStorageDataOrder.status);
+    if (orderList.status === "Priprema se") {
+      setOrderStatus("Spremno");
+      orderList.status = orderStatus;
+      localStorageDataOrder[orderList.id - 1].status = orderStatus;
+      // localStorage.setItem("channelCart", localStorageDataOrder);
+      channel.postMessage("Spremno");
     }
-    if (localStorageDataOrder.status === "Primljena porudžbina") {
-      const newLS = localStorageDataOrder;
-      newLS.status = orderStatusObj.inTheMaking;
-      localStorage.setItem(`order${orderList.id}`, JSON.stringify(newLS));
-      localStorageDataOrder = newLS;
-      setOrderStatus(localStorageDataOrder.status);
+    if (orderList.status === "Primljena porudžbina") {
+      setOrderStatus("Priprema se");
+      orderList.status = orderStatus;
+      data.status = orderStatus;
+      localStorageDataOrder[orderList.id - 1] = data;
+      // localStorage.setItem("channelCart", localStorageDataOrder);
+      channel.postMessage("Priprema se");
     }
-
-    console.log(localStorageDataOrder);
   }
 
   return (
