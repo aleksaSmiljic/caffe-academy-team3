@@ -8,7 +8,10 @@ export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { login, setLogin, setIsAdmin, isAdmin } = useContext(LoginContext);
+  const USER = { userEmail: "user@user.com", userPassword: "user1234" };
+  const ADMIN = { adminEmail: "admin@admin.com", adminPassword: "admin1234" };
+
+  const { login, setLogin, setIsAdmin } = useContext(LoginContext);
   const { setCart, setOrderAmound } = useContext(OrderContext);
 
   function handleEmailChange(e) {
@@ -34,11 +37,12 @@ export function LoginPage() {
       (localStorageDataUser?.email === email &&
         localStorageDataUser?.password === password) ||
       (localStorageDataAdmin?.email === email &&
-        localStorageDataAdmin?.password === password)
+        localStorageDataAdmin?.password === password) ||
+      (USER.userEmail === email && USER.userPassword === password) ||
+      (ADMIN.adminEmail === email && ADMIN.adminPassword === password)
     ) {
-      if (email.includes("@coffee.com")) {
+      if (email.includes("@coffee.com") || email === ADMIN.adminEmail) {
         setIsAdmin(true);
-        console.log(isAdmin);
       }
       setLogin(true);
       navigate("/");
