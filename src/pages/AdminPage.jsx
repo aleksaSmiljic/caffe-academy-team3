@@ -3,17 +3,18 @@ import { OrderContext } from "../context/OrderContext";
 import AdminStatusCard from "../components/AdminStatusCard";
 import { LoginContext } from "../context/loginContext";
 import { Link } from "react-router-dom";
-import TestAdminCard from "../testComponents/TestAdminCard";
 
 export function AdminPage() {
-  const { finishedOrder, cartChannel } = useContext(OrderContext);
+  const { cartChannel, finishedOrde } = useContext(OrderContext);
   const { isAdmin } = useContext(LoginContext);
   const [cart, setCart] = useState(null);
+  const lsCart = JSON.parse(localStorage.getItem("channelCart"));
 
   cartChannel.addEventListener("message", (e) => {
     setCart(e.data);
     console.log(e.data);
     localStorage.setItem("channelCart", JSON.stringify(e.data));
+    console.log(lsCart);
   });
 
   return (
@@ -25,14 +26,8 @@ export function AdminPage() {
           </h1>
           <div className="md:flex md:justify-center md:items-center">
             <ul className="sm:w-full lg:max-w-full  grid grid-cols-1 md:grid-cols-2">
-              {cart?.map((orderList) => (
-                <AdminStatusCard
-                  key={orderList.id}
-                  orderList={orderList}
-                  // status={orderList.status}
-                  // id={orderList.id}
-                  // totalPrice={orderList.totalPrice}
-                />
+              {lsCart?.map((orderList) => (
+                <AdminStatusCard key={orderList.id} orderList={orderList} />
               ))}
             </ul>
           </div>

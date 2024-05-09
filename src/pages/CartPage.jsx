@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 import { CoffeeCardModal } from "../components/CoffeeCardModal";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,6 @@ const CartPage = () => {
     id,
     setId,
   } = useContext(OrderContext);
-
-  const { cartChannel } = useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
 
@@ -55,7 +53,6 @@ const CartPage = () => {
     setOrderAmound(0);
     setCart([]);
     console.log(finishedOrder);
-    cartChannel.postMessage(finishedOrder);
   }
 
   return (
@@ -125,7 +122,6 @@ const CartPage = () => {
           onClick={() => {
             if (login) {
               handleOrder();
-              // cartChannel.postMessage(finishedOrder);
               navigate("/status");
             } else {
               navigate("/login");

@@ -6,10 +6,7 @@ const StatusPageCard = ({ orderList }) => {
 
   const { channel } = useContext(OrderContext);
 
-  channel.onmessage = (e) => {
-    setStatus(e.data);
-    console.log(e.data);
-  };
+  // const data = JSON.parse(localStorage.getItem("channelCart"));
 
   return (
     <li
@@ -29,6 +26,10 @@ const StatusPageCard = ({ orderList }) => {
             <h1 className="text-xl font-montserrat">
               {coffee.name} <span>({coffee.amound} kom)</span>
             </h1>
+            <p>
+              {coffee.size}/{coffee.bean}
+              {coffee.milk ? `/${coffee.typeOfMilk}` : ""}
+            </p>
           </li>
         ))}
       </div>

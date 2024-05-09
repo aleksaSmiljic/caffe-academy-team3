@@ -2,33 +2,19 @@ import { useContext, useState } from "react";
 import { OrderContext } from "../context/OrderContext";
 
 const AdminStatusCard = ({ orderList }) => {
-  // let localStorageDataOrder = JSON.parse(
-  //   localStorage.getItem(`order${orderList.id}`)
-  // );
+  const { channel, finishedOrder } = useContext(OrderContext);
 
   // const localStorageDataOrder = JSON.parse(localStorage.getItem("channelCart"));
-  const { channel } = useContext(OrderContext);
 
-  const localStorageDataOrder = JSON.parse(localStorage.getItem("channelCart"));
-  const data = localStorageDataOrder[orderList.id - 1];
-
-  const [orderStatus, setOrderStatus] = useState(orderList.status);
+  const [orderStatus, setOrderStatus] = useState("Primljena porudžbina");
 
   function handleStatus() {
-    if (orderList.status === "Priprema se") {
-      setOrderStatus("Spremno");
-      orderList.status = orderStatus;
-      localStorageDataOrder[orderList.id - 1].status = orderStatus;
-      // localStorage.setItem("channelCart", localStorageDataOrder);
-      channel.postMessage("Spremno");
-    }
-    if (orderList.status === "Primljena porudžbina") {
+    if (orderStatus === "Primljena porudžbina") {
+      channel.postMessage({ status: "Priprema se", orderId: orderList.id });
       setOrderStatus("Priprema se");
-      orderList.status = orderStatus;
-      data.status = orderStatus;
-      localStorageDataOrder[orderList.id - 1] = data;
-      // localStorage.setItem("channelCart", localStorageDataOrder);
-      channel.postMessage("Priprema se");
+    } else if (orderStatus === "Priprema se") {
+      setOrderStatus("Spremno");
+      channel.postMessage({ status: "Spremno", orderId: orderList.id });
     }
   }
 
@@ -55,7 +41,7 @@ const AdminStatusCard = ({ orderList }) => {
             </h1>
             <p>
               {coffee.size}/{coffee.bean}
-              {coffee.milk ? `/${coffee.milk}` : ""}
+              {coffee.milk ? `/${coffee.typeOfMilk}` : ""}
             </p>
           </li>
         ))}
