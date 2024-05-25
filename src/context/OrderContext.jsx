@@ -69,11 +69,11 @@ export const OrderContextProvider = ({ children }) => {
       const orders = restore();
       const newOrder = orders.map((order) => {
         if (id === order.id) {
-          if (order.status === "Priprema se") {
-            return { ...order, status: "Spremno" };
+          if (order.status === "Kafa se priprema") {
+            return { ...order, status: "Kafa je spremna" };
           }
           if (order.status === "Primljena porudžbina") {
-            return { ...order, status: "Priprema se" };
+            return { ...order, status: "Kafa se priprema" };
           }
         }
         return order;
