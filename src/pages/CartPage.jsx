@@ -5,15 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 
 const CartPage = () => {
-  const {
-    cart,
-    setCart,
-    setOrderAmound,
-    setFinishedOrder,
-    finishedOrder,
-    id,
-    setId,
-  } = useContext(OrderContext);
+  const { cart, setCart, setOrderAmound, id, addOrder, setId } =
+    useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
 
@@ -39,20 +32,10 @@ const CartPage = () => {
 
   function handleOrder() {
     const totalPrice = cart?.reduce((acc, curr) => acc + curr.totalPrice, 0);
-    setId((old) => old + 1);
-    setFinishedOrder((old) => [
-      ...old,
-      {
-        id: id,
-        order: cart,
-        totalPrice: totalPrice,
-        status: "Primljena porudžbina",
-      },
-    ]);
-    localStorage.setItem(`cart`, JSON.stringify(finishedOrder));
+    addOrder(cart, totalPrice);
+    console.log(cart);
     setOrderAmound(0);
     setCart([]);
-    console.log(finishedOrder);
   }
 
   return (

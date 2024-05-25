@@ -1,21 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { OrderContext } from "../context/OrderContext";
 
 const AdminStatusCard = ({ orderList }) => {
-  const { channel, finishedOrder } = useContext(OrderContext);
+  const { changeStatus, OrderReceiver } = useContext(OrderContext);
 
-  // const localStorageDataOrder = JSON.parse(localStorage.getItem("channelCart"));
-
-  const [orderStatus, setOrderStatus] = useState("Primljena porudžbina");
-
-  function handleStatus() {
-    if (orderStatus === "Primljena porudžbina") {
-      channel.postMessage({ status: "Priprema se", orderId: orderList.id });
-      setOrderStatus("Priprema se");
-    } else if (orderStatus === "Priprema se") {
-      setOrderStatus("Spremno");
-      channel.postMessage({ status: "Spremno", orderId: orderList.id });
-    }
+  function handleStatusChange() {
+    changeStatus(orderList.id);
   }
 
   return (
@@ -28,10 +18,12 @@ const AdminStatusCard = ({ orderList }) => {
         Order ID: {orderList.id}
       </h1>
       <button
-        onClick={handleStatus}
+        onClick={() => {
+          handleStatusChange();
+        }}
         className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
       >
-        {orderStatus}
+        {orderList.status}
       </button>
       <div className="flex flex-col">
         {orderList?.order?.map((coffee) => (

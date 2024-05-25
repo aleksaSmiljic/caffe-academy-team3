@@ -5,17 +5,9 @@ import { LoginContext } from "../context/loginContext";
 import { Link } from "react-router-dom";
 
 export function AdminPage() {
-  const { cartChannel, finishedOrde } = useContext(OrderContext);
   const { isAdmin } = useContext(LoginContext);
-  const [cart, setCart] = useState(null);
-  const lsCart = JSON.parse(localStorage.getItem("channelCart"));
-
-  cartChannel.addEventListener("message", (e) => {
-    setCart(e.data);
-    console.log(e.data);
-    localStorage.setItem("channelCart", JSON.stringify(e.data));
-    console.log(lsCart);
-  });
+  const { finishedOrder } = useContext(OrderContext);
+  // let lsCart = JSON.parse(localStorage.getItem("cart"));
 
   return (
     <div>
@@ -26,8 +18,8 @@ export function AdminPage() {
           </h1>
           <div className="md:flex md:justify-center md:items-center">
             <ul className="sm:w-full lg:max-w-full  grid grid-cols-1 md:grid-cols-2">
-              {lsCart?.map((orderList) => (
-                <AdminStatusCard key={orderList.id} orderList={orderList} />
+              {finishedOrder?.map((orderList) => (
+                <AdminStatusCard key={orderList?.id} orderList={orderList} />
               ))}
             </ul>
           </div>

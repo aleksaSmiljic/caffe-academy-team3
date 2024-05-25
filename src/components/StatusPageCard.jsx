@@ -1,13 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { OrderContext } from "../context/OrderContext";
 
 const StatusPageCard = ({ orderList }) => {
-  const [status, setStatus] = useState("Primljena porudžbina");
-
-  const { channel } = useContext(OrderContext);
-
-  // const data = JSON.parse(localStorage.getItem("channelCart"));
-
   return (
     <li
       className={
@@ -18,7 +12,7 @@ const StatusPageCard = ({ orderList }) => {
         Order ID: {orderList.id}
       </h1>
       <p className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] rounded-md py-2 px-4">
-        {status}
+        {orderList.status}
       </p>
       <div className="flex flex-col">
         {orderList?.order?.map((coffee) => (

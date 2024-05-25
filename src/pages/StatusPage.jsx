@@ -6,47 +6,7 @@ import { Link } from "react-router-dom";
 
 export function StatusPage() {
   const { login } = useContext(LoginContext);
-  const { finishedOrder, cartChannel, channel, setFinishedOrder } =
-    useContext(OrderContext);
-  const [cart, setCart] = useState(finishedOrder);
-
-  // cartChannel.postMessage(finishedOrder);
-
-  cartChannel.onmessage = (e) => {
-    setCart(e.data);
-    console.log(e.data);
-    localStorage.setItem("channelCart", JSON.stringify(e.data));
-  };
-
-  channel.onmessage = (e) => {
-    // if (e.data.orderId === orderList.id) {
-    //   setStatus(e.data.status);
-    //   console.log(e.data);
-    // }
-    // const a = finishedOrder.map((order) => {
-    //   if (e.data.orderId === order.id) {
-    //     return { ...order, status: e.data.status };
-    //   }
-    //   return order;
-    // });
-    // console.log("konzol log", a);
-    setFinishedOrder((old) =>
-      old.map((order) => {
-        if (e.data.orderId === order.id) {
-          return { ...order, status: e.data.status };
-        }
-        return order;
-      })
-    );
-    // cartChannel.postMessage(
-    //   finishedOrder.map((order) => {
-    //     if (e.data.orderId === order.id) {
-    //       return { ...order, status: e.data.status };
-    //     }
-    //     return order;
-    //   })
-    // );
-  };
+  const { finishedOrder } = useContext(OrderContext);
 
   return (
     <>
@@ -59,7 +19,7 @@ export function StatusPage() {
           <div className="md:flex md:justify-center md:items-center">
             <ul className="sm:w-full lg:max-w-full  grid grid-cols-1 md:grid-cols-2">
               {finishedOrder?.map((orderList) => (
-                <StatusPageCard key={orderList.id} orderList={orderList} />
+                <StatusPageCard key={orderList?.id} orderList={orderList} />
               ))}
             </ul>
           </div>
