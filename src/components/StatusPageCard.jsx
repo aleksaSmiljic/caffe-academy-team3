@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { OrderContext } from "../context/OrderContext";
-
 const StatusPageCard = ({ orderList }) => {
+  const id = orderList.id.slice(0, 7);
+
   return (
     <li
       className={
@@ -9,7 +8,7 @@ const StatusPageCard = ({ orderList }) => {
       }
     >
       <h1 className="text-lg font-semibold left-2 top-2 absolute font-montserrat">
-        Order ID: {orderList.id}
+        Order ID: {id}
       </h1>
       <p className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] rounded-md py-2 px-4">
         {orderList.status}

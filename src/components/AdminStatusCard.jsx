@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { OrderContext } from "../context/OrderContext";
 
 const AdminStatusCard = ({ orderList }) => {
-  const { changeStatus, OrderReceiver } = useContext(OrderContext);
+  const { changeStatus } = useContext(OrderContext);
+
+  const id = orderList.id.slice(0, 7);
 
   function handleStatusChange() {
     changeStatus(orderList.id);
@@ -15,11 +17,12 @@ const AdminStatusCard = ({ orderList }) => {
       }
     >
       <h1 className="text-lg font-semibold left-2 top-2 absolute font-montserrat">
-        Order ID: {orderList.id}
+        Order ID: {id}
       </h1>
       <button
         onClick={() => {
           handleStatusChange();
+          console.log(typeof orderList.id);
         }}
         className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
       >

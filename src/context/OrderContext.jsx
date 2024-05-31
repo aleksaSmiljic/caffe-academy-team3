@@ -17,7 +17,7 @@ export const OrderContextProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(1);
   const [orderAmound, setOrderAmound] = useState(0);
   const [amound, setAmound] = useState(0);
-  const [id, setId] = useState(1);
+  // const [id, setId] = useState(1);
   const [finishedOrder, setFinishedOrder] = useState([]);
 
   const save = useCallback((data) => {
@@ -46,11 +46,11 @@ export const OrderContextProvider = ({ children }) => {
   // Adding new order to the List
   const addOrder = useCallback(
     (order, totalPrice) => {
-      setId((old) => old + 1);
+      // setId((old) => old + 1);
       const newOrder = [
         ...finishedOrder,
         {
-          id: id,
+          id: uuidv4(),
           order: order,
           status: "Primljena porudžbina",
           totalPrice: totalPrice,
@@ -61,7 +61,7 @@ export const OrderContextProvider = ({ children }) => {
       save(newOrder);
       OrderSender.postMessage(newOrder);
     },
-    [finishedOrder, setFinishedOrder, save, id]
+    [finishedOrder, setFinishedOrder, save]
   );
 
   const changeStatus = useCallback(
