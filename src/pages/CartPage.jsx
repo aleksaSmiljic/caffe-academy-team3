@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../context/loginContext";
 
 const CartPage = () => {
-  const { cart, setCart, setOrderAmound, id, addOrder, setId } =
-    useContext(OrderContext);
+  const { cart, setCart, setOrderAmound, addOrder } = useContext(OrderContext);
 
   const { login } = useContext(LoginContext);
 

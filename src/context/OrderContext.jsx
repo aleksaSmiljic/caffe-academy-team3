@@ -17,7 +17,6 @@ export const OrderContextProvider = ({ children }) => {
   const [orderId, setOrderId] = useState(1);
   const [orderAmound, setOrderAmound] = useState(0);
   const [amound, setAmound] = useState(0);
-  // const [id, setId] = useState(1);
   const [finishedOrder, setFinishedOrder] = useState([]);
 
   const save = useCallback((data) => {

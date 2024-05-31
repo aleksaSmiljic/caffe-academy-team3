@@ -22,7 +22,6 @@ const AdminStatusCard = ({ orderList }) => {
       <button
         onClick={() => {
           handleStatusChange();
-          console.log(typeof orderList.id);
         }}
         className="font-semibold right-2 top-2 absolute font-montserrat text-sm md:text-md text-white bg-[#248CC5] hover:bg-[#164864] duration-300 rounded-md py-2 px-4"
       >

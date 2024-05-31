@@ -1,4 +1,4 @@
-const Card = ({ title, description, price, hasMilk, coffee, openModal }) => {
+const Card = ({ title, description, price, coffee, openModal }) => {
   return (
     <>
       <li
